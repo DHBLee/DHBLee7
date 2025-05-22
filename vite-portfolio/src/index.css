@@ -14,8 +14,9 @@
   --color-Slate200: #cdd9e6;
   --color-Slate100: #E1E5F2;
 
-
+  --breakpoint-1597: 99.8125rem;
   --breakpoint-1440: 90rem;
+  --breakpoint-1024: 64rem;
   --breakpoint-768: 47.5rem;
 
 }
@@ -99,15 +100,12 @@
   }
 
   ol, ul {
-    padding-left: 1.5rem;
     margin-left: 0;
   }
   ol {
     list-style-type: decimal;
   }
-  ul {
-    list-style-type: disc;
-  }
+
   ul li::marker {
     font-size: 0.7rem;
   }
@@ -268,7 +266,7 @@
 
   .HeadingM {
    font-size: 1.25rem;
-   font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
+   font-size: clamp(1.25rem, 0.6338028169014085rem + 2.629107981220657vw, 3rem);
   }
 
   .HeadingS {
@@ -278,7 +276,7 @@
 
   .Body1 {
     font-size: 0.75rem;
-    font-size: clamp(0.75rem, 0.30985915492957744rem + 1.8779342723004695vw, 2rem);
+    font-size: clamp(0.75rem, 0.4859154929577465rem + 1.1267605633802815vw, 1.5rem);
   }
 
   .Body2 {

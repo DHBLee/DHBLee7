@@ -44,7 +44,12 @@ const Section5 = ({padding}) => {
                     </div>
                     <p className="Body1">If you ever feel like building something together—whether it’s for fun, work, or just because—feel free to hit me up!</p>
                 </div>
-                <form action={formAction} className='text-left flex flex-col w-full gap-4'>
+
+                <div className='grid text-Slate100 Small'>
+                    <p>Click my email below to send me a message:</p>
+                    <a href="mailto:dongskieblee@gmail.com?subject=Let%27s Build Something Together" className='hover:underline'>dongskieblee@gmail.com</a>
+                </div>
+                {/* <form action={formAction} className='text-left flex flex-col w-full gap-4'>
                     <fieldset className='grid gap-2'>
                         <label htmlFor="name" className='text-Slate100 uppercase text-[14px]'>name</label>
                         <input required type="text" name='name' id='name' defaultValue={formState.enteredValues?.name} className='p-2 pl-3 text-Slate500 bg-white rounded-3xl w-full'/>
@@ -68,7 +73,7 @@ const Section5 = ({padding}) => {
                         </ul>
                     )}
                     <button type='submit' className='w-max mx-auto md:mx-0 md:ml-auto bg-Slate600 rounded-2xl text-Slate100 text-[14px] font-semibold py-2 px-9'>SUBMIT</button>
-                </form>
+                </form> */}
             </div>
         </AnimatedSection>
     </section>

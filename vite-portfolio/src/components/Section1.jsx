@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styleLines, getAppliedClasses, getParentContainerClasses } from '../util/stylesLogic';
 import AnimatedSection from './UI/AnimatedSection';
+import arrow from '../assets/arrow.png';
 
 const Section1 = ({ padding }) => {
   const [activeStyles, setActiveStyles] = useState(null);
@@ -46,7 +47,7 @@ const Section1 = ({ padding }) => {
   };
 
   return (
-    <section className={`${padding} pt-[20px] md:pt-[90px] 1440:pt-[84px] bg-Slate100`}>
+    <section className={`relative ${padding} pt-[20px] md:pt-[90px] 1440:pt-[84px] bg-Slate100`}>
           <div className='mx-auto max-w-[1320px]'>
             <AnimatedSection>
               <div className='grid'>
@@ -58,7 +59,7 @@ const Section1 = ({ padding }) => {
             </AnimatedSection> 
 
             <motion.div
-              className={`pt-[3rem] text-Slate500 text-[5px] w-[calc(116/375*100vw)] md:w-[calc(230/768*100vw)] h-[calc(259/375*100vw)] md:h-[calc(510/768*100vw)] 1440:h-[calc(766/1440*100vw)] bg-[#487EB0]/[19%] absolute right-[clamp(1rem,-1.684859154929577rem+11.455399061032862vw,8.625rem)] 1597:right-[clamp(16rem,10.914653784219002rem+5.152979066022544vw,18rem)] max-w-[439px] max-h-[779px] top-0 ${getParentContainerClasses(activeStyles)}`}
+              className={`mt-[-3rem] 1440:mt-[-5rem] pt-[3rem] text-Slate500 text-[5px] w-[calc(116/375*100vw)] md:w-[calc(230/768*100vw)] h-[calc(259/375*100vw)] md:h-[calc(510/768*100vw)] 1440:h-[calc(766/1440*100vw)] bg-[#487EB0]/[19%] absolute right-[clamp(1rem,-1.684859154929577rem+11.455399061032862vw,8.625rem)] 1597:right-[clamp(16rem,10.914653784219002rem+5.152979066022544vw,18rem)] max-w-[439px] max-h-[779px] top-0 ${getParentContainerClasses(activeStyles)}`}
               layout 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,6 +112,25 @@ const Section1 = ({ padding }) => {
             <AnimatedSection>
               <hr className='mt-[106px] md:mt-[252px] border-0 border-b-4 border-Slate300'/>
             </AnimatedSection>
+
+
+            <motion.div 
+              className='absolute left-[50%] translate-x-[-50%] bottom-[20%] translate-y-[-20%] flex flex-col-reverse items-center'
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                y: 0,scale: 1,
+                transition: {
+                  delay: 1,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 10
+                }
+              }}
+            >
+              <p className='ExtraSmall text-Slate500 '>Try out this interactive feature!</p>
+              <img src={arrow} alt="An Arrow" className='w-8 rotate-[-80deg]'/>
+            </motion.div>
           </div>
     </section>
   );

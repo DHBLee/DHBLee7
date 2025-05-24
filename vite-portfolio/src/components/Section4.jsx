@@ -31,7 +31,14 @@ const Section4 = ({padding}) => {
     <section id="project" className={`${padding}  bg-Slate600 py-[24px] md:py-[47px] 1440:py-[60px]`}>
         <AnimatedSection>
             <div className='grid gap-6 md:gap-12 1440:gap-[83px] mx-auto max-w-[1320px]'>
-              <h2 className='HeadingM text-Slate500'>MY PROJECTS</h2>
+              <div className='flex items-center gap-4'>
+                <h2 className='HeadingM text-Slate500'>MY PROJECTS</h2>
+                <p className='text-Slate500 Small flex gap-3'>
+                  ( featuring 
+                  <a href="https://www.frontendmentor.io/" target='_blank' className='hover:underline'>Frontend Mentor</a>
+                  )
+                </p>
+              </div>
               <div className='grid gap-[38px] md:gap-[72px] 1440:gap-[111px]'>
                 {projects.slice(0, visibleProjects).map((project, index) => (
                   <Project 
@@ -63,12 +70,15 @@ const Section4 = ({padding}) => {
                   )}
                 </button>
               ) : (
+                <>
                 <button
                   onClick={seeLess}
                   className='w-max mx-auto border-b-3 text-Slate500 transition-colors hover:text-Slate200 Small'
                 >
                   SEE LESS
                 </button>
+                <p className='mx-auto text-Slate500 Small mt-[-4rem]'>See more of my projects at <a href="https://www.frontendmentor.io/profile/DHBLee" target='_blank' className='hover:underline'>https://www.frontendmentor.io/profile/DHBLee</a></p>
+                </>
               )}
             </div>
         </AnimatedSection>

@@ -12,9 +12,9 @@ const Header = ({ padding }) => {
         <h6 className='text-[14px] md:text-[15px] 1440:text-[24px] font-bold'>DHBLee</h6>
 
         <nav aria-label='Main menu' className='z-50 hidden md:flex gap-5 md:gap-7 1440:gap-11'>
-          <a href="#about">About</a>
-          <a href="#project">My Project</a>
-          <a href="#contact">Contact</a>
+          <a href="#about" className='hover:text-Slate600 transition-colors duration-300'>About</a>
+          <a href="#project" className='hover:text-Slate600 transition-colors duration-300'>My Project</a>
+          <a href="#contact" className='hover:text-Slate600 transition-colors duration-300'>Contact</a>
         </nav>
 
         <button 

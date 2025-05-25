@@ -22,7 +22,7 @@ const Project = ({img, name, description, link, codelink, reverse, techstack, cu
       initial="initial"
       animate="animate"
       variants={variants} 
-      className={`grid grid-cols-1 lg:grid-cols-2 ${reverse ? 'lg:[&>*:nth-child(1)]:order-2' : ''} gap-4 md:gap-6 lg:gap-[80px] items-start`}>
+      className={`grid grid-cols-1 lg:grid-cols-2 ${reverse ? 'lg:[&>*:nth-child(1)]:order-2' : ''} gap-4 md:gap-6 lg:gap-[80px] items-center`}>
       <img src={img} alt={img} className='w-full h-auto object-contain' loading='lazy'/>
       <div className='flex flex-col text-center gap-4 md:gap-5 lg:text-left'>
           <div className='flex flex-col gap-1'>

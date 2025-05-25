@@ -23,7 +23,7 @@ const Project = ({img, name, description, link, codelink, reverse, techstack, cu
       animate="animate"
       variants={variants} 
       className={`flex flex-col  ${reverse ? '1024:flex-row-reverse' : '1024:flex-row'} gap-4 md:gap-6 1024:gap-[80px]`}>
-      <img src={img} alt={img} className='1024:w-[45%] 1024:h-max my-auto object-contain' loading='lazy'/>
+      <img src={img} alt={img} className='1024:w-[45%] 1024:h-max object-contain' loading='lazy'/>
       <div className='flex flex-col text-center gap-4 md:gap-5 1024:text-left'>
           <div className='flex flex-col gap-1'>
             <h3 className='HeadingS text-Slate100'>{name}</h3>

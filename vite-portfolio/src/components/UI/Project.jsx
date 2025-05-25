@@ -22,12 +22,12 @@ const Project = ({img, name, description, link, codelink, reverse, techstack, cu
       initial="initial"
       animate="animate"
       variants={variants} 
-      className={`flex flex-col  ${reverse ? '1024:flex-row-reverse' : '1024:flex-row'} h-max 1024:items-start gap-4 md:gap-6 1024:gap-[80px]`}>
-      <img src={img} alt={img} className='1024:w-[45%] 1024:h-max object-contain' loading='lazy'/>
-      <div className='flex flex-col text-center gap-4 md:gap-5 1024:text-left'>
+      className={`flex flex-col  ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} h-max lg:items-start gap-4 md:gap-6 lg:gap-[80px]`}>
+      <img src={img} alt={img} className='lg:w-[45%] lg:h-max object-contain' loading='lazy'/>
+      <div className='flex flex-col text-center gap-4 md:gap-5 lg:text-left'>
           <div className='flex flex-col gap-1'>
             <h3 className='HeadingS text-Slate100'>{name}</h3>
-            <ul className='text-[10px] md:text-[16px] flex justify-center 1024:justify-start gap-4 text-Slate100'>
+            <ul className='text-[10px] md:text-[16px] flex justify-center lg:justify-start gap-4 text-Slate100'>
               {techstack.map((stack, index) => (
                 <li 
                   key={index} 
@@ -40,7 +40,7 @@ const Project = ({img, name, description, link, codelink, reverse, techstack, cu
           </div>
           
           <p className='Body2 text-Slate100'>{description}</p>
-          <div className='flex justify-center 1024:justify-start gap-[23px] Body2'>
+          <div className='flex justify-center lg:justify-start gap-[23px] Body2'>
             <button className='px-4 py-1.5 font-bold rounded-[10px] bg-Slate500 text-Slate100'>
               <a target="_blank" rel="noopener noreferer" href={link}>View Project</a>
             </button>

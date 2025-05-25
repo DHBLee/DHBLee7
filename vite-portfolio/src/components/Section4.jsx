@@ -77,7 +77,7 @@ const Section4 = ({padding}) => {
                 >
                   SEE LESS
                 </button>
-                <p className='mx-auto text-Slate500 Small mt-[-4rem]'>See more of my projects at <a href="https://www.frontendmentor.io/profile/DHBLee" target='_blank' className='hover:underline'>https://www.frontendmentor.io/profile/DHBLee</a></p>
+                <p className='mx-auto text-Slate500 Small'>See more of my projects at <a href="https://www.frontendmentor.io/profile/DHBLee" target='_blank' className='hover:underline'>https://www.frontendmentor.io/profile/DHBLee</a></p>
                 </>
               )}
             </div>

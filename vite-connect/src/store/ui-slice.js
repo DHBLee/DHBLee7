@@ -5,12 +5,15 @@ const uiSlice = createSlice({
     initialState: { menuIsOpen: false, rulesIsOpen: false },
     reducers: {
         toggle(state, action) {
-            if (action === "menu") {
+            if (action.payload === "menu") {
                 state.menuIsOpen = !state.menuIsOpen;
-            } else if (action === "rules") {
+            } else if (action.payload === "rules") {
                 state.rulesIsOpen = !state.rulesIsOpen;
-            }
-        
+            } 
+        },
+        closeModal(state) {
+            state.menuIsOpen = false;
+            state.rulesIsOpen = false;
         }
     }
 })

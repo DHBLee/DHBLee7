@@ -37,7 +37,7 @@
   --color-LightPurple: hsl(257, 100%, 64%);
   --color-Pink: hsl(347, 97%, 70%);
   --color-Yellow: hsl(41, 100%, 70%);
-
+  --color-Black: hsl(0, 0%, 34%);
   --breakpoint-1597: 99.8125rem;
   --breakpoint-1440: 90rem;
 
@@ -86,7 +86,7 @@
     min-height: 100vh;
     height: 100%;
     overflow-x: hidden;
-    font-family: 'Space Grotesk', sans-serif; 
+    font-family: 'Space-Grotesk', sans-serif; 
     background-color: var(--color-LightPurple);
   }
 
@@ -130,6 +130,7 @@
   ol {
     list-style-type: decimal;
   }
+  
 
   ul li::marker {
     font-size: 0.7rem;
@@ -298,6 +299,9 @@
  }
  .HeadingXS {
   @apply font-bold
+ }
+ .PlayerName {
+  @apply text-[16px] md:text-[20px] leading-[21px] md:leading-[26px] font-bold;
  }
  .Body {
   @apply font-medium;

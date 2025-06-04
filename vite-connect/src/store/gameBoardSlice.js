@@ -13,12 +13,17 @@ const gameBoardSlice = createSlice({
     reducers: {
         makeMove(state, action) {
             const { column, playerId } = action.payload;
+            const newBoard = state.board.map(row => [...row]);
 
             for (let row = 5; row >= 0; row--) {
-                if (!state.board[row][column]) {
-                    state.board[row][column] = playerId;
-                    state.lastMove = { row, column, playerId };
-                    return;
+                if (!newBoard[row][column]) {
+                    newBoard[row][column] = playerId;
+         
+                    return {
+                        ...state,
+                        board: newBoard,
+                        lastMove: { row, column, playerId }
+                    };
                 }
             }
         },

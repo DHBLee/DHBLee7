@@ -22,13 +22,14 @@ const gameSessionSlice = createSlice({
                     { id: "you", name: "YOU", score: 0 },
                     { id: "cpu", name: "CPU", score: 0 }
                 ]
+                state.playerTurn="you"
             } else {
                 state.players = [
                     { id: "player1", name: "PLAYER 1", score: 0 },
                     { id: "player2", name: "PLAYER 2", score: 0 }
                 ]
+                state.playerTurn="player1"
             }
-            state.playerTurn = "player1";
 
             state.initialGameSetup = {
                 gameMode,
@@ -41,14 +42,6 @@ const gameSessionSlice = createSlice({
             );
             const nextPLayerIndex = (currentPlayerIndex + 1) % state.players.length;
             state.playerTurn = state.players[nextPLayerIndex].id;
-        },
-        restartGame(state) {
-            if (state.initialGameSetup) {
-                state.players.forEach(player => {
-                    player.score = 0;
-                });
-                state.playerTurn = "player1";
-            }
         },
         quitGame(state) {
             state.players = [];

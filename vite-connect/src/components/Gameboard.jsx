@@ -20,6 +20,8 @@ const Gameboard = () => {
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board.board);
   const playerTurn = useSelector((state) => state.session.playerTurn) 
+  const playerTokenSmall = playerTurn === "player1 || you" ? counterRedSmall : counterYellowSmall;
+  const playerTokenLarge = playerTurn === "player1 || you" ? counterRedLarge : counterYellowLarge;
 
   const playerMove = (column, playerId) => {
     dispatch(boardActions.makeMove({ column, playerId }));
@@ -41,7 +43,7 @@ const Gameboard = () => {
             <div key={`${rowIndex}-${colIndex}`} className="flex items-center justify-center">
               {cell && (
                 <motion.div
-                  className={`w-full h-full top-[-0.8rem] border-[3px] border-black rounded-full ${cell === 'player1' || cell === "you" ? 'bg-Pink' : 'bg-Yellow'}`}
+                  className={`w-full h-full flex items-center justify-center `}
                   style={{ position: 'relative', zIndex: 10 }}
                   initial={{ y: `-${(rowIndex + 1) * 100}%`, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -50,7 +52,15 @@ const Gameboard = () => {
                     damping: 20,
                     stiffness: 100,
                   }}
-                />
+                >
+                  <picture>
+                    <source 
+                      srcSet={playerTokenLarge}
+                      media="(min-width: 768px)"
+                    />
+                    img
+                  </picture>
+                </motion.div>
               )}
             </div>
           ))

@@ -2,7 +2,7 @@ import React from 'react'
 
 const PlayerScoreboard = ({icon, name, score, extraStyles, imgStyles}) => {
   return (
-     <div className={`relative flex flex-col md:justify-between px-12 gap-2  text-center border-[3px] border-black shadow-[0px_10px_0px_0px_black] rounded-3xl bg-white w-full items-center py-3 md:py-6 ${extraStyles}`}>
+     <div className={`relative flex flex-col md:justify-between px-12 1440:px-10 gap-2  text-center border-[3px] border-black shadow-[0px_10px_0px_0px_black] rounded-3xl bg-white w-full items-center py-3 md:py-6 1440:py-8 ${extraStyles}`}>
             <span className='PlayerName'>
                 {name}
             </span>

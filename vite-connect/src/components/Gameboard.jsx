@@ -19,9 +19,9 @@ import { motion } from 'framer-motion';
 const Gameboard = () => {
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board.board);
-  const playerTurn = useSelector((state) => state.session.playerTurn) 
-  const playerTokenSmall = playerTurn === "player1 || you" ? counterRedSmall : counterYellowSmall;
-  const playerTokenLarge = playerTurn === "player1 || you" ? counterRedLarge : counterYellowLarge;
+  const playerTurn = useSelector((state) => state.session.playerTurn);
+  const status = useSelector((state) => state.board.status); 
+  const isDone = status !== "idle";
 
   const playerMove = (column, playerId) => {
     dispatch(boardActions.makeMove({ column, playerId }));
@@ -37,7 +37,7 @@ const Gameboard = () => {
       </picture>
 
 
-      <div className="absolute top-0 left-0 w-full h-full grid grid-rows-6 grid-cols-7 gap-1 z-20 px-[2%] py-[4%] pointer-events-none">
+      <div className="absolute top-0 md:top-[-0.8rem] left-0 w-full h-full grid grid-rows-6 grid-cols-7 gap-1 z-20 px-[2%] py-[4%] pointer-events-none">
         {board.flatMap((row, rowIndex) =>
           row.map((cell, colIndex) => (
             <div key={`${rowIndex}-${colIndex}`} className="flex items-center justify-center">
@@ -55,10 +55,10 @@ const Gameboard = () => {
                 >
                   <picture>
                     <source 
-                      srcSet={playerTokenLarge}
+                      srcSet={cell === "player1" || cell === "you" ? counterRedLarge : counterYellowLarge}
                       media="(min-width: 768px)"
                     />
-                    img
+                    <img src={cell === "player1" || cell === "you" ? counterRedSmall : counterYellowSmall} alt="Player Token Small image" className='w-full'/>
                   </picture>
                 </motion.div>
               )}
@@ -71,8 +71,8 @@ const Gameboard = () => {
         {board[0].map((_, colIndex) => (
           <div
             key={`col-${colIndex}`}
-            className="cursor-pointer col-span-1"
-            onClick={() => playerMove(colIndex, playerTurn)}
+            className="cursor-pointer col-span-1 "
+            onClick={() => { if (!isDone) {playerMove(colIndex, playerTurn)} }}
           />
         ))}
       </div>

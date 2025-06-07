@@ -16,7 +16,7 @@ const PlayersScores = () => {
 
 
   return (
-    <div className='flex gap-5 md:gap-8'>
+    <div className='flex gap-5 md:gap-8 1440:hidden'>
         <PlayerScoreboard icon={icon1} name={players[0].name} score={players[0].score} extraStyles="ml-4 md:flex-row" imgStyles="left-[-1.5rem]" />
         <PlayerScoreboard icon={icon2} name={players[1].name} score={players[1].score} extraStyles="mr-4 md:flex-row-reverse" imgStyles="right-[-1.5rem]" />
     </div>

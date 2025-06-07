@@ -84,7 +84,7 @@
 
   body {
     min-height: 100vh;
-    height: 100%;
+    height: auto;
     overflow-x: hidden;
     font-family: 'Space-Grotesk', sans-serif; 
     background-color: var(--color-LightPurple);

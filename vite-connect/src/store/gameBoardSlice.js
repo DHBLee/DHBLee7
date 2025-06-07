@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { checkDraw, checkWin, } from "../util/gameLogic";
+import { sessionActions } from "./gameSessionSlice";
+
 const initialBoardState = {
     board: Array(6).fill().map(() => Array(7).fill(null)),
     state: 'idle',
@@ -35,6 +37,7 @@ const gameBoardSlice = createSlice({
             if (checkWin(state.board, row, column)) {
                 state.status = 'win';
                 state.winner = playerId
+                console.log(state.winner)
             } else if (checkDraw(state.board)) {
                 state.status = 'draw';
                 state.winner = null;
@@ -42,12 +45,15 @@ const gameBoardSlice = createSlice({
         },
         resetBoard(state) {
             state.board = initialBoardState.board;
-            state.status = 'playing';
-            state.lastMove = null;
+            state.status = 'idle';
+            state.winner = null;
         },
         setGameStatus(state, action) {
             state.status = action.payload;
         }
+    },
+    extraReducers: (builder) => {
+
     }
 });
 

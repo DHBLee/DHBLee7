@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { boardActions } from "./gameBoardSlice";
 const initialGameState = { players: [], gameMode: null, playerTurn: null, initialGameSetup: null}
 
 const gameSessionSlice = createSlice({
@@ -6,7 +7,8 @@ const gameSessionSlice = createSlice({
     initialState: initialGameState,
     reducers: {
         incrementScore(state, action) {
-            const { playerId } = action.payload;
+            const playerId = action.payload;
+            console.log(playerId)
             const player = state.players.find(p => p.id === playerId);
             if (player) {
                 player.score += 1;
@@ -49,6 +51,15 @@ const gameSessionSlice = createSlice({
             state.playerTurn = null;
             state.initialGameSetup = null;
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(boardActions.resetBoard, (state) => {
+            if (state.gameMode === "cpu") {
+                state.playerTurn = "you";
+            } else {
+                state.playerTurn = "player1"
+            }
+        })
     }
 });
 

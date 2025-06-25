@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { boardActions } from "./gameBoardSlice";
-const initialGameState = { players: [], gameMode: null, playerTurn: null, initialGameSetup: null}
+const initialGameState = { players: [], gameMode: null, playerTurn: null, firstTurn: null, initialGameSetup: null}
 
 const gameSessionSlice = createSlice({
     name: "gameSession",
@@ -24,7 +24,7 @@ const gameSessionSlice = createSlice({
                     { id: "you", name: "YOU", score: 0 },
                     { id: "cpu", name: "CPU", score: 0 }
                 ]
-                state.playerTurn="you"
+                state.playerTurn="you";
             } else {
                 state.players = [
                     { id: "player1", name: "PLAYER 1", score: 0 },
@@ -32,7 +32,7 @@ const gameSessionSlice = createSlice({
                 ]
                 state.playerTurn="player1"
             }
-
+            state.firstTurn = state.playerTurn;
             state.initialGameSetup = {
                 gameMode,
                 players: [...state.players]
@@ -53,12 +53,21 @@ const gameSessionSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(boardActions.resetBoard, (state) => {
-            if (state.gameMode === "cpu") {
+        builder.addCase(boardActions.nextRound, (state) => {
+            if (state.firstTurn === "cpu") {
                 state.playerTurn = "you";
-            } else {
+            } else if (state.firstTurn === "player2") {
                 state.playerTurn = "player1"
+            } else if (state.firstTurn === "player1") {
+                state.playerTurn = "player2";
+            } else {
+                state.playerTurn = "cpu";
             }
+            state.firstTurn = state.playerTurn;
+        }),
+        
+        builder.addCase(boardActions.resetBoard, (state) => {
+            state.playerTurn = state.firstTurn;
         })
     }
 });

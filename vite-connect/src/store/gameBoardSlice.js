@@ -4,7 +4,7 @@ import { sessionActions } from "./gameSessionSlice";
 
 const initialBoardState = {
     board: Array(6).fill().map(() => Array(7).fill(null)),
-    state: 'idle',
+    status: 'idle',
     lastMove: null,
     winner: null,
 };
@@ -29,6 +29,7 @@ const gameBoardSlice = createSlice({
                 }
             }
         },
+        
         checkGameResult(state) {
             if (!state.lastMove) return;
 
@@ -44,6 +45,11 @@ const gameBoardSlice = createSlice({
             }
         },
         resetBoard(state) {
+            state.board = initialBoardState.board;
+            state.status = 'idle';
+            state.winner = null;
+        },
+        nextRound(state) {
             state.board = initialBoardState.board;
             state.status = 'idle';
             state.winner = null;

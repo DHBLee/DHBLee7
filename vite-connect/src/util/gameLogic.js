@@ -33,3 +33,4 @@ export function checkWin(board, lastRow, lastCol) {
 export function checkDraw(board) {
     return board[0].every(cell => cell !== null);
 }
+

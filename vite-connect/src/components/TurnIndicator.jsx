@@ -18,7 +18,8 @@ const TurnIndicator = () => {
 
   const anotherRound = () => {
       dispatch(sessionActions.incrementScore(winner));
-      dispatch(boardActions.resetBoard())
+      dispatch(sessionActions.togglePlayerTurn())
+      dispatch(boardActions.nextRound())
   }
 
   return (

@@ -24,11 +24,11 @@ const Home = () => {
         <Logo />
         <div className='flex flex-col gap-6 w-full'>
             <Button onClick={() => toggleGameMode("cpu")} textOnly={false} extraStyles="flex items-center justify-between text-left bg-Pink text-white" >
-                <span>PLAY VS CPU</span>
+                <span>PLAYER VS CPU</span>
                 <img src={pvcIcon} alt="Player vs CPU face icon" />
             </Button>
             <Button onClick={() => toggleGameMode("pvp")} textOnly={false} extraStyles="flex items-center justify-between text-left text-black bg-Yellow">
-                <span>PLAY VS PLAYER</span>
+                <span>PLAYER VS PLAYER</span>
                 <img src={pvpIcon} alt="Player vs Player face icon" />
             </Button>
             <Button onClick={toggleRules} extraStyles='text-left bg-white text-black'>

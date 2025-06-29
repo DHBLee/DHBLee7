@@ -7,6 +7,12 @@ import Button from "./Button";
 import { sessionActions } from "../../store/gameSessionSlice";
 import { boardActions } from "../../store/gameBoardSlice";
 
+const rules = [
+  "Red goes first in the first game.",
+  "Players must alternate turns, and only one disc can be dropped in each turn.",
+  "The game ends when there is a 4-in-a-row or a stalemate.",
+  "The starter of the previous game goes second on the next game.",
+]
 const Modal = ({ onClose }) => {
   const dialog = useRef();
   const dispatch = useDispatch();
@@ -56,18 +62,11 @@ const Modal = ({ onClose }) => {
                 <div className="flex flex-col gap-4 pb-6">
                   <h3 className="HeadingS text-Purple">HOW TO PLAY</h3>
                   <ol className="list-decimal list-outside pl-4 text-Black marker:text-black marker:pr-4  [--marker-space:0.75rem]">
-                    <li className="Body pl-3">
-                      Red goes first in the first game.
-                    </li>
-                    <li className="Body pl-3">
-                      Players must alternate turns, and only one disc can be dropped in each turn.
-                    </li>
-                    <li className="Body pl-3 ">
-                      The game ends when there is a 4-in-a-row or a stalemate.
-                    </li>
-                    <li className="Body pl-3 ">
-                      The starter of the previous game goes second on the next game.
-                    </li>
+                    {rules.map((rule, index) => (
+                      <li key={index} className="Body pl-3">
+                        {rule}
+                      </li>
+                    ))}
                   </ol>
                 </div>
                 <button onClick={closeModal} aria-label="Done Checking the Rules Action" className="bg-transparent absolute bottom-[-2.5rem] right-[50%] translate-x-[50%]">

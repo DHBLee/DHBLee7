@@ -9,7 +9,7 @@ export const metadata = {
 const vouchers = () => {
   return (
     <div className='relative min-h-screen grid place-items-center'>
-        <Image src="/DSC01996.JPG" fill className="absolute object-cover" />
+        <Image src="/DSC01996.JPG" priority fill className="absolute object-cover" />
 
         <div className='relative pt-[8rem] pb-[5rem] z-20 px-[86px] flex gap-10 items-start justify-center'>
             <div className='flex flex-col items-center gap-4'>

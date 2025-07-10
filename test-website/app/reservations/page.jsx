@@ -9,7 +9,7 @@ export const metadata = {
 const reservations = () => {
   return (
     <div className='relative min-h-screen'>
-        <Image src="/DSC02024.JPG" alt="Mezzalira Restaurant" fill className="absolute object-cover" /> 
+        <Image src="/DSC02024.JPG" priority alt="Mezzalira Restaurant" fill className="absolute object-cover" /> 
 
         <div className='relative pt-[5rem] pb-[3rem] z-20 flex gap-10 items-center px-[86px]'>
             <div>

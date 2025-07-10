@@ -42,7 +42,7 @@ const FaqSection = () => {
 
   return (
     <div className='flex justify-center pt-[7rem] relative h-[800px]'>
-        <Image src="/faq-bg.png" alt="BG Image for Faq page " fill className="object-cover" />
+        <Image priority src="/faq-bg.png" alt="BG Image for Faq page " fill className="object-cover" />
         <div className='text-[#333333] absolute flex flex-col max-w-[700px] w-full gap-4'>
                 <h2 className='text-[48px] text-center text-white'>FAQ</h2>
                 {faqs.map((faq, i) => (

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Facebook, X, Instagram, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -17,11 +18,18 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col gap-[3rem] items-start'>
                     <h3 className='text-[20px]'>ALSO VISIT</h3>
-                    <p>Italians and Sons</p>
+                    <a href="https://italianandsons.com.au/" target='_blank'>Italians and sons</a>
                 </div>
                 <div className='flex flex-col gap-[3rem] items-start'>
                     <h3 className='text-[20px]'>BOOK ONLINE</h3>
-                    <p>Make a reservation <br />Buy vouchers</p>
+                    <div className='grid'>
+                        <Link href={"/reservations"}>
+                            Make a reservation
+                        </Link>
+                        <Link href={"/vouchers"}>
+                                Buy voucher    
+                        </Link>
+                    </div>
                 </div>
             </div>
 

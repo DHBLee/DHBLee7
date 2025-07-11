@@ -12,7 +12,7 @@ export const metadata = {
 async function getMenu() {
   try {
     const res = await fetch(
-      'http://test-react-integration-with-wordpress.local/wp-json/wp/v2/menu_item?per_page=100&_embed',
+      'https://api.sheetbest.com/sheets/6b54a76a-271c-4df0-9126-5c7481bcd075',
       { next: { revalidate: 600 } } 
     )
     const data = await res.json()

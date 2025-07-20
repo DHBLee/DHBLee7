@@ -1,6 +1,12 @@
+'use client'
 
+
+import MobileNav from '@/UI/MobileNav'
+import { AnimatePresence } from 'framer-motion'
+import { Menu } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+
 
 const links = [
     {
@@ -24,9 +30,6 @@ const links = [
         name: "CONTACT",
         ref: "#footer"
     },
-]
-
-const moreLinks = [
     {
         name: "FAQ",
         ref: "/faq"
@@ -40,12 +43,28 @@ const moreLinks = [
         ref: "/location"
     },
 ]
+
+// const moreLinks = [
+//     {
+//         name: "FAQ",
+//         ref: "/faq"
+//     },
+//     {
+//         name: "VOUCHERS",
+//         ref: "/vouchers"
+//     },
+//     {
+//         name: "LOCATION",
+//         ref: "/location"
+//     },
+// ]
 const Header = () => {
+  const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false);
   return (
-    <header className='fixed w-full top-0 z-50 bg-black/10 backdrop-blur-xs flex justify-between items-center py-[24px] px-[86px]'>
-        <Link href="/" className='text-[24px]'>MEZZALIRA RISTORANTE</Link>
-        <nav>
-            <ul className='flex items-center gap-5 text-[12px]'>
+    <header className='fixed w-full top-0 z-50 bg-black/10 backdrop-blur-xs flex justify-between items-center py-[12px] 1440:py-[24px] px-[24px] md:px-[32px] 1440:px-[86px]'>
+        <Link href="/" className='HeadingS'>MEZZALIRA RISTORANTE</Link>
+        <nav className='hidden lg:block'>
+            <ul className='flex items-center gap-5 BodySmall'>
                 {links.map(link => (
                     <li key={link.name} className='list-none'>
                         {link.external ? (
@@ -57,7 +76,7 @@ const Header = () => {
                         )}
                     </li>
                 ))}
-                <li className="relative group list-none">
+                {/* <li className="relative group list-none">
                     <button className="cursor-pointer">MORE</button>
                     <ul className="absolute top-full left-0 bg-[#333333] text-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 min-w-[160px] z-50">
                         {moreLinks.map(link => (
@@ -68,15 +87,27 @@ const Header = () => {
                             </li>
                         ))}
                     </ul>
-                </li>
-                <button className='px-[27px] py-[7px] bg-[#333333] rounded-[5px]'>
-                    <Link href="/reservations">
+                </li> */}
+                <Link href="/reservations">
+                    <button className='px-[27px] py-[7px] bg-Black rounded-[5px]'>
                         RESERVATIONS
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </ul>
                 
         </nav>
+
+        <button
+            onClick={() => setMobileNavIsOpen(prev => !prev)}
+            aria-label='Menu Button'
+            className='lg:hidden'
+        >
+            <Menu />
+        </button>
+
+        <AnimatePresence>
+            {mobileNavIsOpen && <MobileNav handleClose={setMobileNavIsOpen} links={links} />}
+        </AnimatePresence>
     </header>
   )
 }

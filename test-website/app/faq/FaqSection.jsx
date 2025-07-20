@@ -41,17 +41,17 @@ const FaqSection = () => {
   }
 
   return (
-    <div className='flex justify-center pt-[7rem] relative h-[800px]'>
-        <Image priority src="/faq-bg.png" alt="BG Image for Faq page " fill className="object-cover" />
-        <div className='text-[#333333] absolute flex flex-col max-w-[700px] w-full gap-4'>
-                <h2 className='text-[48px] text-center text-white'>FAQ</h2>
+    <section className='flex justify-center pt-[7rem] relative h-[800px]'>
+        <Image priority src="/faq-bg.webp" alt="BG Image for Faq page " fill className="object-cover" />
+        <div className='px-[24px] md:px-[32px] 1440:px-[86px] text-Black absolute flex flex-col max-w-[700px] w-full gap-4'>
+                <h1 className='HeadingM text-center text-white'>FAQ</h1>
                 {faqs.map((faq, i) => (
                     <div key={i} className="overflow-hidden rounded-md">
                         <button
                         onClick={() => toggle(i)}
-                        className="w-full px-[13px] py-[21px] bg-[#CFAE74] flex justify-between items-center"
+                        className="w-full px-[13px] py-[21px] bg-Yellow flex justify-between items-center"
                         >
-                            <span>{faq.question}</span>
+                            <p className='Body'>{faq.question}</p>
                             {openIndex === i ? <Minus /> : <Plus />}
                         </button>
                         <AnimatePresence initial={false}>
@@ -65,16 +65,18 @@ const FaqSection = () => {
                                 }}
                                 exit={{ maxHeight: 0, opacity: 0 }}
                                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                                className="bg-[#333333]/40 text-white p-4 overflow-hidden will-change-[maxHeight,opacity]"
+                                className="bg-Black/40 text-white p-4 overflow-hidden will-change-[maxHeight,opacity]"
                             >
-                                {faq.answer}
+                                <p className='Body'>
+                                    {faq.answer}
+                                </p>
                             </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
                 ))}
         </div>
-    </div>
+    </section>
   )
 }
 

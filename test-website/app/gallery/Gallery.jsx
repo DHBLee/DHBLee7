@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image';
 import { X } from 'lucide-react';
@@ -27,61 +27,68 @@ const item = {
 };
 
 const gallery = [
-    "/beef.JPG",
-    "/bread.JPG",
-    "/brighter-images-of-places.png",
-    "/faq-bg.png",
-    "/fire-wood.png",
-    "/fish.JPG",
-    "/pasta.JPG",
-    "/DSC01902.JPG",
-    "/DSC01918.JPG",
-    "/DSC01928.JPG",
-    "/DSC01931.JPG",
-    "/DSC01932.JPG",
-    "/DSC01943.JPG",
-    "/DSC01944.JPG",
-    "/DSC01947.JPG",
-    "/DSC01948.JPG",
-    "/DSC01952.JPG",
-    "/DSC01958.JPG",
-    "/DSC01968.JPG",
-    "/DSC02003.JPG",
-    "/DSC02004.JPG",
-    "/DSC02006.JPG",
-    "/DSC02019.JPG",
-    "/DSC02024.JPG",
-    "/DSC01899.JPG",
-    "/DSC01891.JPG",
-    "/wine-picture1.png",
-    "/wine-picture2.png",
-    "/wine-picture3.png",
-    "/wine-picture4.png",
+    "/gallery (1).webp",
+    "/gallery (2).webp",
+    "/gallery (3).webp",
+    "/gallery (4).webp",
+    "/gallery (5).webp",
+    "/gallery (6).webp",
+    "/gallery (7).webp",
+    "/gallery (8).webp",
+    "/gallery (9).webp",
+    "/gallery (10).webp",
+    "/gallery (11).webp",
+    "/gallery (12).webp",
+    "/gallery (13).webp",
+    "/gallery (14).webp",
+    "/gallery (15).webp",
+    "/gallery (16).webp",
+    "/gallery (17).webp",
+    "/gallery (18).webp",
+    "/gallery (19).webp",
+    "/gallery (20).webp",
+    "/gallery (21).webp",
+    "/gallery (22).webp",
 ]
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [selectedImage])
+
   return (
     <>
       <motion.div 
-        className='mx-auto 1440:mx-0 grid place-items-center auto-rows-auto grid-cols-1 md:grid-cols-2 1440:grid-cols-4 gap-6 px-8 md:px-[54px] 1440:px-[86px] pt-[24px] pb-[55px] md:py-10'
+        className='mx-auto 1440:mx-0 grid place-items-center auto-rows-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 1440:grid-cols-4 gap-6 px-8 md:px-[54px] 1440:px-[86px] pt-[24px] pb-[55px] md:py-10'
         variants={container}
         initial="hidden"
         animate="show"
       >
-        {gallery.map((artwork, index) => (
-          <motion.button 
-            key={artwork}
+        {gallery.map((src, index) => (
+          <motion.button
+            key={index}
             variants={item}
-            onClick={() => setSelectedImage(artwork)}
-            className='group relative w-full h-full' 
-            aria-label='Image of a Certain Artwork'
-            whileHover={{ scale: 1.03 }} 
+            onClick={() => setSelectedImage(src)}
+            className="relative w-full overflow-hidden"
+            aria-label={`Open image ${src}`}
+            whileHover={{ scale: 1.03 }}
           >
-            <img 
-              src={artwork} 
-              alt={`Artwork of ${artwork}`} 
-              className='w-full h-auto'
+            <Image
+              src={src}
+              alt={`Gallery image ${index + 1}`}
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover rounded"
+              placeholder="blur"
+              blurDataURL="/blur-placeholder.png"
             />
           </motion.button>
         ))}
@@ -95,6 +102,8 @@ const Gallery = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
+            role="dialog"
+            aria-modal="true"
           >
             <motion.div
               className="relative max-w-4xl aspect-[4/3] w-[80vw] p-8"

@@ -2,7 +2,8 @@ import Footer from '@/components/Footer';
 import { lora } from './fonts'
 import "./globals.css";
 import Header from "@/components/Header";
-
+import HighlightedEvent from '@/UI/HighlightedEvent';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata = {
@@ -92,6 +93,13 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+
+        <div id="mobile-nav"></div>
+        <div id="highlighted-event"></div>
+
+        <HighlightedEvent />
+
+        <SpeedInsights />
       </body>
     </html>
   );

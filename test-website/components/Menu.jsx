@@ -1,24 +1,16 @@
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
+import PDFlists from './pdfLists'
+import { useSheetData } from '@/util/useSheetData';
 
 const Menu = ({ initialMenu }) => {
-  const [menu, setMenu] = useState(initialMenu)
+  const [menu, loadingMenu] = useSheetData('menu', initialMenu);
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  // Client side fetch to get fresh data, fallback to initialMenu
-  useEffect(() => {
-    fetch('https://sheet.best/api/sheets/973889e9-f9ea-418e-87fd-9dc1e5781673')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data[0]?.name) {
-          setMenu(data)
-        }
-      })
-      .catch(err => console.error('Client fetch failed:', err))
-  }, [])
+  // Fetch fresh data client-side
 
-  // Extract unique categories from all menu items, split and normalize
+  // Get all categories
   const allCategories = useMemo(() => {
     const cats = new Set()
     menu.forEach(item => {
@@ -32,18 +24,11 @@ const Menu = ({ initialMenu }) => {
     return Array.from(cats).sort()
   }, [menu])
 
-  // Group menu items by each category
+  // Group menu by category
   const groupedMenu = useMemo(() => {
     const groups = {}
     menu.forEach(item => {
-      if (!item.category) {
-        groups['uncategorized'] = groups['uncategorized'] || []
-        groups['uncategorized'].push(item)
-        return
-      }
-      const categories = item.category
-        .split(',')
-        .map(c => c.trim().toLowerCase())
+      const categories = item.category?.split(',').map(c => c.trim().toLowerCase()) || ['uncategorized']
       categories.forEach(cat => {
         if (!groups[cat]) groups[cat] = []
         groups[cat].push(item)
@@ -52,16 +37,48 @@ const Menu = ({ initialMenu }) => {
     return groups
   }, [menu])
 
-  // Decide which categories to show based on filter
   const visibleCategories = selectedCategory === 'all' ? allCategories : [selectedCategory]
 
-  return (
-    <div className="bg-black p-8 space-y-12">
+  // Inject structured data (Menu schema)
+  useEffect(() => {
+    const structured = {
+      "@context": "https://schema.org",
+      "@type": "Menu",
+      "hasMenuSection": visibleCategories.map(cat => ({
+        "@type": "MenuSection",
+        "name": cat,
+        "hasMenuItem": (groupedMenu[cat] || []).map(item => ({
+          "@type": "MenuItem",
+          "name": item.name,
+          "offers": {
+            "@type": "Offer",
+            "price": item.price,
+            "priceCurrency": "AUD"
+          }
+        }))
+      }))
+    }
 
-      {/* Filter Buttons */}
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.innerHTML = JSON.stringify(structured)
+    document.head.appendChild(script)
+
+    return () => {
+      document.head.removeChild(script)
+    }
+  }, [groupedMenu, visibleCategories])
+
+  return (
+    <section className="bg-black px-[24px] md:px-[32px] 1440:px-[86px] py-8 text-white space-y-12">
+
+       <PDFlists />
+      {/* Category Filter */}
+      
       <div className="flex flex-wrap justify-center gap-4 mb-8">
         <button
           onClick={() => setSelectedCategory('all')}
+          aria-pressed={selectedCategory === 'all'}
           className={selectedCategory === 'all' ? 'underline' : ''}
         >
           All
@@ -70,32 +87,37 @@ const Menu = ({ initialMenu }) => {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={selectedCategory === cat ? 'uppercase  underline' : 'uppercase'}
+            aria-pressed={selectedCategory === cat}
+            className={selectedCategory === cat ? 'uppercase underline' : 'uppercase'}
           >
             {cat}
           </button>
         ))}
       </div>
 
-      {/* Menu Items Grouped by Category */}
+      {/* Loading Indicator */}
+      {loadingMenu && <p className="Body text-center italic text-gray-400">Refreshing menu...</p>}
+
+      {/* Menu Sections */}
       {visibleCategories.map(cat => (
-        <div key={cat}>
-          <h3 className="uppercase text-xl font-semibold mb-4">{cat}</h3>
-          <ul className="space-y-4">
+        <section key={cat} aria-labelledby={`heading-${cat}`}>
+          <h4 id={`heading-${cat}`} className="uppercase HeadingXS font-semibold mb-4">{cat}</h4>
+          <ul className="space-y-4 Body">
             {(groupedMenu[cat] || []).map((item, idx) => (
               <li
                 key={idx}
-                className="flex justify-between border-b border-gray-300 pb-2"
+                className="flex justify-between border-b border-gray-600 pb-2"
               >
-                <span>{item.name}</span>
-                <span>${item.price}</span>
+                <p>{item.name}</p>
+                {!cat.toLowerCase().startsWith('tasting') && <p>${item.price}</p>}
+
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       ))}
 
-    </div>
+    </section>
   )
 }
 

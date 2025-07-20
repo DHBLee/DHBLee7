@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
-import PDFlists from './pdfLists'
+import PDFlists from './PDFLists'
 import { useSheetData } from '@/util/useSheetData';
 
 const Menu = ({ initialMenu }) => {
@@ -74,7 +74,7 @@ const Menu = ({ initialMenu }) => {
 
        <PDFlists />
       {/* Category Filter */}
-      
+
       <div className="flex flex-wrap justify-center gap-4 mb-8">
         <button
           onClick={() => setSelectedCategory('all')}

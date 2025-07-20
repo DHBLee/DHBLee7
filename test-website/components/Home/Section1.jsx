@@ -31,7 +31,8 @@ const Section1 = () => {
           muted
           loop 
           playsInline
-          poster="/mezzalira-video-cover.jpg"
+          fetchPriority="high"
+          poster="/mezzalira-video-cover.webp"
           className="w-full min-h-[400px] h-auto object-cover"
         > 
         

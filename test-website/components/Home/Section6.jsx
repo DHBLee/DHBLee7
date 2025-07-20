@@ -15,7 +15,7 @@ const Section6 = () => {
         <MotionDiv
           ClassName='relative z-20'
         >
-            <img src="/brighter-images-of-places.png" alt="Images of the interior of Mezzalira Ristorante" />
+            <img src="/brighter-images-of-places.webp" alt="Images of the interior of Mezzalira Ristorante" />
         </MotionDiv>
       </section>
       

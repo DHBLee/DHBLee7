@@ -18,12 +18,12 @@ const Section7 = () => {
           </div>
           <form action="" className='w-full flex flex-col gap-[1.7rem] items-start'>
                 <fieldset className='Body flex flex-col items-start w-full gap-2'>
-                  <label htmlFor="">First Name*</label>
-                  <input type="text"  className='text-black px-3 bg-white rounded-lg w-full py-1'/>
+                  <label htmlFor="text">First Name*</label>
+                  <input id="text" type="text"  className='text-black px-3 bg-white rounded-lg w-full py-1'/>
                 </fieldset>
                 <fieldset className='Body flex flex-col items-start w-full gap-2'>
-                  <label htmlFor="">Email*</label>
-                  <input type="email"  className='text-black px-3 bg-white rounded-lg w-full py-1'/>
+                  <label htmlFor="text">Email*</label>
+                  <input id="email" type="email"  className='text-black px-3 bg-white rounded-lg w-full py-1'/>
                 </fieldset>
                 <Button>
                   Subscribe

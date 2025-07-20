@@ -26,7 +26,7 @@ const Section1 = () => {
   return (
     <div className="relative max-h-[780px]">
         <video
-          src="/mezzalira-video.mp4"
+          aria-label='A Compilation Video of Mezzalira'
           autoPlay
           muted
           loop 
@@ -34,8 +34,9 @@ const Section1 = () => {
           fetchPriority="high"
           poster="/mezzalira-video-cover.webp"
           className="w-full min-h-[400px] h-auto object-cover"
-        > 
-        
+        >
+          <source src="/mezzalira-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         <div className="z-20 flex flex-col gap-4 items-center text-center absolute top-[50%] left-[50%] translate-[-50%] w-full">
           <motion.h1 

@@ -88,11 +88,13 @@ const Header = () => {
                         ))}
                     </ul>
                 </li> */}
-                <Link href="/reservations">
-                    <button className='px-[27px] py-[7px] bg-Black rounded-[5px]'>
-                        RESERVATIONS
-                    </button>
-                </Link>
+                <li>
+                    <Link href="/reservations">
+                        <button className='px-[27px] py-[7px] bg-Black rounded-[5px]'>
+                            RESERVATIONS
+                        </button>
+                    </Link>
+                </li>
             </ul>
                 
         </nav>

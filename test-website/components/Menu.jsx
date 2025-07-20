@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
-import PDFlists from './PDFLists'
+import PDFlists from './PDFlists'
 import { useSheetData } from '@/util/useSheetData';
 
 const Menu = ({ initialMenu }) => {

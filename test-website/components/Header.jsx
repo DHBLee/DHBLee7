@@ -66,7 +66,7 @@ const Header = () => {
         <nav className='hidden lg:block'>
             <ul className='flex items-center gap-5 BodySmall'>
                 {links.map(link => (
-                    <li key={link.name} className='list-none'>
+                    <li key={link.name} className='list-none animated-underline'>
                         {link.external ? (
                             <a href={link.ref} target="_blank" rel="noopener noreferrer">{link.name}</a>
                         ) : (
@@ -90,7 +90,7 @@ const Header = () => {
                 </li> */}
                 <li>
                     <Link href="/reservations">
-                        <button className='px-[27px] py-[7px] bg-Black rounded-[5px]'>
+                        <button className='px-[27px] py-[7px] bg-Black hover:text-Black hover:bg-Yellow transition-colors duration-300 rounded-[5px]'>
                             RESERVATIONS
                         </button>
                     </Link>

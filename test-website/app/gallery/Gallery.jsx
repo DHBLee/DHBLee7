@@ -79,14 +79,13 @@ const Gallery = () => {
             onClick={() => setSelectedImage(src)}
             className="relative w-full overflow-hidden"
             aria-label={`Open image ${src}`}
-            whileHover={{ scale: 1.03 }}
           >
             <Image
               src={src}
               alt={`Gallery image ${index + 1}`}
               width={800}
               height={600}
-              className="w-full h-auto object-cover rounded"
+              className="w-full h-auto object-cover rounded transition-transform duration-300 hover:scale-105"
               placeholder="blur"
               blurDataURL="/blur-placeholder.png"
             />

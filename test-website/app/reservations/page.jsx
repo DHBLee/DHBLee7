@@ -26,7 +26,8 @@ export const metadata = {
 const reservations = () => {
   return (
     <section className='relative min-h-screen'>
-        <Image src="/reservations-bg.webp" priority alt="Mezzalira Restaurant" width={1920} height={1080} className="absolute w-full h-full object-cover" /> 
+        <Image src="/reservations-bg.webp" priority alt="Mezzalira Restaurant" width={1920} height={1080} className="absolute w-full h-full object-cover" placeholder="blur"
+  blurDataURL="/blur/reservations-bg-blur.webp" /> 
 
         <section className='relative pt-[5rem] pb-[3rem] z-20 flex flex-col lg:flex-row gap-10 items-center px-[24px] md:px-[32px] 1440:px-[86px]'>
             <div>

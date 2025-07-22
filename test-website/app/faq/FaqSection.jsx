@@ -42,7 +42,8 @@ const FaqSection = () => {
 
   return (
     <section className='flex justify-center py-[7rem] relative w-full  min-h-screen 1440:h-[1000px]'>
-        <Image priority src="/faq-bg.webp" alt="BG Image for Faq page " fill className="absolute object-cover" />
+        <Image priority src="/faq-bg.webp" alt="BG Image for Faq page " fill className="absolute object-cover" placeholder="blur"
+  blurDataURL="/blur/faq-bg-blur.webp" />
         <div className='px-[24px] md:px-[32px] 1440:px-[86px] text-Black relative flex flex-col max-w-[700px] w-full gap-4'>
                 <h1 className='HeadingM text-center text-white'>FAQ</h1>
                 {faqs.map((faq, i) => (

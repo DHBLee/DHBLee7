@@ -32,7 +32,7 @@ export default async function page()  {
   return (
      <section className=''>
        <div className='grid place-items-center relative py-[5rem]'>
-         <Image src="/events-bg.png" fill priority alt="Events BG Img of Mezzalira" className="object-cover" />
+         <Image src="/blur/events-bg.webp" fill priority alt="Events BG Img of Mezzalira" className="object-cover" />
          <Events initialEvents={initialEvents}/>
        </div>
      </section>

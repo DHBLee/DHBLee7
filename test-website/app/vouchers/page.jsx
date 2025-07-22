@@ -25,7 +25,8 @@ export const metadata = {
 const vouchers = () => {
   return (
     <section className='w-full relative min-h-screen grid place-items-center'>
-        <Image src="/vouchers-bg.webp" alt="BG Picture for Vouchers Page" priority fill className="absolute object-cover" />
+        <Image src="/vouchers-bg.webp" alt="BG Picture for Vouchers Page" priority fill className="absolute object-cover" placeholder="blur"
+  blurDataURL="/blur/vouchers-bg-blur.webp"  />
 
         <div className='relative pt-[8rem] pb-[5rem] z-20 px-[24px] md:px-[32px] 1440:px-[86px] flex flex-col lg:flex-row gap-10 items-center justify-center'>
             <div className='flex flex-col items-center gap-4'>

@@ -10,7 +10,7 @@ const Section7 = () => {
         <Image src="/newsletter-bg.webp" fill alt="A picture of a food" className="absolute object-cover"/>
         
          <MotionDiv
-          ClassName='px-[24px] md:px-[32px] 1440:px-0 relative w-full max-w-[740px] top-[50%] left-[50%] translate-[-50%] flex flex-col items-center text-center gap-[2rem] 1440:gap-[4rem]'
+          ClassName='px-[24px] md:px-[32px] 1440:px-0 relative w-full max-w-[740px] flex flex-col items-center text-center gap-[2rem] 1440:gap-[4rem]'
         >
           <div>
               <h2 className='HeadingM'>SIGN UP TO OUR NEWSLETTER</h2>

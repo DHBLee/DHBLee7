@@ -64,7 +64,7 @@ const Section5 = () => {
                 </div>
                 <div className="flex items-center gap-2">
                     <h5 className="Body">{currentTestimonial.name}, </h5>
-                    <a href={currentTestimonial.link} target='_blank' >
+                    <a href={currentTestimonial.link} target='_blank' rel="noopener noreferrer" >
                         <span className="BodySmall underline">{currentTestimonial.source}</span>
                     </a>
                 </div>

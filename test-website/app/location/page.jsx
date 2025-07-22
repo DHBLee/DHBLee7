@@ -52,10 +52,10 @@ const location = () => {
     <section className='bg-black py-[5rem] px-[24px] md:px-[32px] 1440:px-[86px] flex flex-col items-center gap-10'>
       <h1 className='HeadingM'>LOCATION</h1>
       <div className='flex items-center gap-10 Body'>
-        <a href="https://www.google.com/maps/place/Mezzalira+Italian+Restaurant/@-35.2793577,149.127825,3a,75y,27.99h,90t/data=!3m7!1e1!3m5!1saZatREMOU-wabqBkhiHyXg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DaZatREMOU-wabqBkhiHyXg%26yaw%3D27.990719!7i16384!8i8192!4m14!1m7!3m6!1s0x6b164d68247db179:0xe7b74f4cdd4d0c3c!2sMezzalira+Italian+Restaurant!8m2!3d-35.2792545!4d149.1279026!16s%2Fg%2F1tl9mr2w!3m5!1s0x6b164d68247db179:0xe7b74f4cdd4d0c3c!8m2!3d-35.2792545!4d149.1279026!16s%2Fg%2F1tl9mr2w?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+        <a href="https://www.google.com/maps/place/Mezzalira+Italian+Restaurant/@-35.2793577,149.127825,3a,75y,27.99h,90t/data=!3m7!1e1!3m5!1saZatREMOU-wabqBkhiHyXg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DaZatREMOU-wabqBkhiHyXg%26yaw%3D27.990719!7i16384!8i8192!4m14!1m7!3m6!1s0x6b164d68247db179:0xe7b74f4cdd4d0c3c!2sMezzalira+Italian+Restaurant!8m2!3d-35.2792545!4d149.1279026!16s%2Fg%2F1tl9mr2w!3m5!1s0x6b164d68247db179:0xe7b74f4cdd4d0c3c!8m2!3d-35.2792545!4d149.1279026!16s%2Fg%2F1tl9mr2w?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
           <img className="w-[300px]" src="/mezzalira-location.png" alt="A screenshot of Mezzalira's Location in Google" />
         </a>
-        <a href="https://www.google.com/maps/search/parking+nearby+Mezzalira/@-35.2793489,149.127825,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target='_blank'>
+        <a href="https://www.google.com/maps/search/parking+nearby+Mezzalira/@-35.2793489,149.127825,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target='_blank' rel="noopener noreferrer">
           <img className="w-[300px]" src="/parking.png" alt="A screenshot of Nearby Parking in Mezzalira" />
         </a>
       </div>

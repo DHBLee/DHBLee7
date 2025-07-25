@@ -48,7 +48,7 @@ const Footer = () => {
                 </li>
             </ul>
         </section>
-        <span className='absolute bottom-0 left-[50%] translate-x-[-50%] text-[10px]'>© Mezzalira Ristorante. All rights reserved. Privacy Policy.</span>
+        <span className='text-center absolute bottom-0 left-[50%] translate-x-[-50%] text-[10px]'>© Mezzalira Ristorante. All rights reserved. Privacy Policy.</span>
     </footer>
   )
 }

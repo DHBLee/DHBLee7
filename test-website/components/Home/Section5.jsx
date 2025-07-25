@@ -89,7 +89,7 @@ const Section5 = () => {
         </article>
 
         {/* Right Side: Autoplay Image */}
-       <figure className="relative lg:w-1/2 h-[500px] lg:h-full overflow-hidden">
+       <figure className="relative lg:w-1/2 h-[400px] lg:h-full overflow-hidden">
           <motion.div
             animate={{ x: `-${imageIndex * (100 / (slideshowImages.length + 1))}%` }}
             transition={isTransitioning ? { duration: 0.6, ease: 'easeInOut' } : { duration: 0 }}

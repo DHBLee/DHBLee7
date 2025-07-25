@@ -14,7 +14,7 @@ export const metadata = {
     description: "Book a table at Mezzalira Ristorante",
     images: [
       {
-        url: "/reservations-bg.webp",
+        url: "/images/background/reservations-bg.webp",
         width: 1200,
         height: 630,
         alt: "Interior photo of Mezzalira Ristorante",
@@ -25,11 +25,21 @@ export const metadata = {
 
 const reservations = () => {
   return (
-    <section className='relative min-h-screen'>
-        <Image src="/reservations-bg.webp" priority alt="Mezzalira Restaurant" width={1920} height={1080} className="absolute w-full h-full object-cover" placeholder="blur"
-  blurDataURL="/blur/reservations-bg-blur.webp" /> 
-
-        <section className='relative pt-[5rem] pb-[3rem] z-20 flex flex-col lg:flex-row gap-10 items-center px-[24px] md:px-[32px] 1440:px-[86px]'>
+    <section className='w-full relative min-h-screen grid place-items-center'>
+      <div className="absolute inset-0">
+        <Image 
+          src="/images/background/reservations-bg.webp" 
+          alt="BG Picture for Reservations Page" 
+          priority 
+          fill 
+          className="object-cover"
+          quality={90}
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL="/images/blur/reservations-bg-blur.webp"
+        />
+      </div>
+      <section className='relative pt-[5rem] pb-[3rem] z-20 flex flex-col lg:flex-row gap-10 items-center px-[24px] md:px-[32px] 1440:px-[86px]'>
             <div>
                 <h1 className='HeadingM mb-[2rem]'>RESERVATIONS</h1>
                 <div className='Body bg-Black/40 px-[14px] py-[3rem] flex flex-col gap-4'>

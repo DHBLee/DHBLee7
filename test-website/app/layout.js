@@ -4,8 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import HighlightedEvent from '@/UI/HighlightedEvent';
 import { SpeedInsights } from "@vercel/speed-insights/next"
-
-
+import { Analytics } from '@vercel/analytics/react';
 export const metadata = {
   title: {
     default: "Mezzalira Ristorante | Best State List Winner in Canberra",
@@ -21,7 +20,7 @@ export const metadata = {
     siteName: "Mezzalira Ristorante",
     images: [
       { 
-       url: "/landmark-bg.png",
+       url: "/landmark-bg.webp",
        width: 1200,
        height: 630,
        alt: "Mezzalira ristorante interior"
@@ -41,12 +40,44 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: 'https://mezzalira.com.au',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mezzalira Ristorante | Best State List Winner in Canberra',
+    description: 'Award-winning Italian restaurant in Canberra',
+    images: ['/landmark-bg.webp'],
+  },
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
+        {/* Resource Hints */}
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        
+        {/* Preload critical assets */}
+        <link 
+          rel="preload" 
+          href={lora.url} 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous"
+        />
+        
+        {/* Preload above-the-fold images */}
+        <link 
+          rel="preload" 
+          href="/landmark-bg.webp" 
+          as="image" 
+          imageSrcSet="/landmark-bg.webp 1x, /landmark-bg@2x.webp 2x"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -88,8 +119,16 @@ export default function RootLayout({ children }) {
       <body
         className={lora.className}
       >
+        {/* Skip to main content link */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
+        
         <Header />
-        <main>
+        <main id="main-content" tabIndex="-1">
           {children}
         </main>
         <Footer />
@@ -100,6 +139,7 @@ export default function RootLayout({ children }) {
         <HighlightedEvent />
 
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

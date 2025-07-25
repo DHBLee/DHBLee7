@@ -22,7 +22,7 @@ const Section7 = () => {
                   <input id="text" type="text"  className='text-black px-3 bg-white rounded-lg w-full py-1'/>
                 </fieldset>
                 <fieldset className='Body flex flex-col items-start w-full gap-2'>
-                  <label htmlFor="text">Email*</label>
+                  <label htmlFor="email">Email*</label>
                   <input id="email" type="email"  className='text-black px-3 bg-white rounded-lg w-full py-1'/>
                 </fieldset>
                 <Button>

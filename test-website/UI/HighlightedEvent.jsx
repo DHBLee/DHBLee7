@@ -53,7 +53,7 @@ const HighlightedEvent = () => {
         <p className="Body text-white">{event.description}</p>
         <p className="BodySmall">{event.duration}</p>
         <Link href="/events">
-            <Button>
+            <Button onClick={prev => setShow(!prev) }>
                 See Events
             </Button>
         </Link>

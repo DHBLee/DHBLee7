@@ -15,7 +15,7 @@ export const metadata = {
     description: "Know more about events at Mezzalira Ristorante.",
     images: [
       {
-        url: "/events-bg.png",
+        url: "/images/background/events-bg.png",
         width: 1200,
         height: 630,
         alt: "Interior photo of Mezzalira Ristorante",
@@ -30,9 +30,21 @@ export const metadata = {
 export default async function page()  {
   const initialEvents = await fetchSheetData('events')
   return (
-     <section className=''>
-       <div className='grid place-items-center relative py-[5rem]'>
-         <Image src="/blur/events-bg-blur.webp" fill priority alt="Events BG Img of Mezzalira" className="object-cover" />
+     <section className='w-full relative min-h-screen grid place-items-center'>
+       <div className="absolute inset-0">
+         <Image 
+           src="/images/background/events-bg.webp" 
+           alt="BG Picture for Events Page" 
+           priority 
+           fill 
+           className="object-cover"
+           quality={90}
+           sizes="100vw"
+           placeholder="blur"
+           blurDataURL="/images/blur/events-bg-blur.webp"
+         />
+       </div>
+       <div className='relative z-10 w-full py-[5rem]'>
          <Events initialEvents={initialEvents}/>
        </div>
      </section>

@@ -442,21 +442,21 @@
 
 @layer components {
   .HeadingL {
-    @apply text-[32px] md:text-[48px] 1440:text-[64px] leading-[1.5]
+    @apply text-[clamp(2rem,1.045801526717557rem+4.071246819338422vw,3rem)] md:text-[clamp(3rem,1.8571428571428572rem+2.380952380952381vw,4rem)] leading-[1.5]
   }
   .HeadingM {
-   @apply text-[24px] md:text-[32px] 1440:text-[48px] leading-[1.5]
+   @apply text-[clamp(1.5rem,1.0229007633587786rem+2.035623409669211vw,2rem)] md:text-[clamp(2rem,1.110236220472441rem+2.099737532808399vw,3rem)] leading-[1.5] 
   }
   .HeadingS {
-   @apply text-[16px] md:text-[20px] 1440:text-[24px] leading-[1.5]
+   @apply text-[clamp(1rem,0.6905940594059405rem+1.3201320132013201vw,1.25rem)] md:text-[clamp(1.25rem,1.0275590551181102rem+0.5249343832020997vw,1.5rem)] leading-[1.5]
   }
   .HeadingXS {
-   @apply text-[16px] md:text-[20px] leading-[1.5]
+   @apply text-[clamp(1rem,0.6905940594059405rem+1.3201320132013201vw,1.25rem)] leading-[1.5]
   }
   .Body {
-    @apply text-[12px] md:text-[16px] leading-[2]
+    @apply text-[clamp(0.75rem,0.4405940594059406rem+1.3201320132013201vw,1rem)] leading-[2]
   }
   .BodySmall {
-    @apply text-[10px] md:text-[12px] leading-[1.5]
+    @apply text-[clamp(0.625rem,0.47029702970297027rem+0.6600660066006601vw,0.75rem)] leading-[1.5]
   }
 }

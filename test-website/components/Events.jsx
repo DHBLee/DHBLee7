@@ -1,13 +1,10 @@
 'use client'
 
-import HighlightedEvent from '@/UI/HighlightedEvent';
 import { useSheetData } from '@/util/useSheetData';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const Events = ({ initialEvents = [] }) => {
   const [events, loadingEvents] = useSheetData('events', initialEvents);
-  const [highlightedEvent, setHighlightedEvent] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
 
   console.log(initialEvents);
@@ -30,6 +27,7 @@ const Events = ({ initialEvents = [] }) => {
       {loadingEvents ? (<p className="text-gray-500">Loading events...</p>) : 
           <div className="w-full flex flex-col gap-8 mt-8">
             {events.map((event, idx) => {
+              console.log(event.image)
               return isEventActive(event.duration) ? (
                 <article key={idx} className="w-full flex flex-col md:flex-row items-center gap-[1rem] md:gap-[3rem] p-4 border border-Yellow rounded-2xl shadow-md bg-maroon">
                   <img

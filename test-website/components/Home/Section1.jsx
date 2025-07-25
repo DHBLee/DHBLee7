@@ -33,12 +33,12 @@ const Section1 = () => {
           playsInline
           fetchPriority="high"
           poster="/mezzalira-video-cover.webp"
-          className="w-full min-h-[400px] h-auto object-cover"
+          className="w-full min-h-[500px] h-auto object-cover"
         >
           <source src="/mezzalira-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="z-20 flex flex-col gap-4 items-center text-center absolute top-[50%] left-[50%] translate-[-50%] w-full">
+        <div className=" px-[24px] md:px-[32px] 1440:px-[86px] z-20 flex flex-col lg:gap-4 items-center text-center absolute top-[50%] left-[50%] translate-[-50%] w-full">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

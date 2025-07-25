@@ -41,19 +41,34 @@ const FaqSection = () => {
   }
 
   return (
-    <section className='flex justify-center py-[7rem] relative w-full  min-h-screen 1440:h-[1000px]'>
-        <Image priority src="/faq-bg.webp" alt="BG Image for Faq page " fill className="absolute object-cover" placeholder="blur"
-  blurDataURL="/blur/faq-bg-blur.webp" />
+    <section className='flex justify-center py-[7rem] relative w-full min-h-screen 1440:h-[1000px]'>
+        <Image 
+          priority 
+          src="/images/background/faq-bg.webp" 
+          alt="" 
+          aria-hidden="true"
+          fill 
+          className="absolute object-cover" 
+          placeholder="blur"
+          blurDataURL="/images/blur/faq-bg-blur.webp" 
+          sizes="100vw"
+          quality={85}
+        />
         <div className='px-[24px] md:px-[32px] 1440:px-[86px] text-Black relative flex flex-col max-w-[700px] w-full gap-4'>
                 <h1 className='HeadingM text-center text-white'>FAQ</h1>
                 {faqs.map((faq, i) => (
                     <div key={i} className="overflow-hidden rounded-md">
                         <button
-                        onClick={() => toggle(i)}
-                        className="w-full px-[13px] py-[21px] bg-Yellow flex justify-between items-center"
+                          onClick={() => toggle(i)}
+                          className="w-full px-[13px] py-[21px] bg-Yellow flex justify-between items-center"
+                          aria-expanded={openIndex === i}
+                          aria-controls={`faq-${i}-content`}
                         >
-                            <p className='Body'>{faq.question}</p>
-                            {openIndex === i ? <Minus /> : <Plus />}
+                            <p className='Body text-left'>{faq.question}</p>
+                            <span className="sr-only">
+                              {openIndex === i ? 'Collapse' : 'Expand'} answer
+                            </span>
+                            {openIndex === i ? <Minus aria-hidden="true" /> : <Plus aria-hidden="true" />}
                         </button>
                         <AnimatePresence initial={false}>
                             {openIndex === i && (

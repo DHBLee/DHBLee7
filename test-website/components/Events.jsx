@@ -34,7 +34,7 @@ const Events = ({ initialEvents = [] }) => {
                     src={event.image}
                     alt={`Image of ${event.name}`}
                     className="min-w-[100px] w-full max-w-[350px] h-auto max-h-[14rem] object-cover rounded-2xl my-2"
-                    onError={(e) => (e.target.src = '/placeholder-img.jpg')}
+                    onError={(e) => (e.target.src = '/images/ui/placeholder-img.jpg')}
                   />
                   <div className='flex flex-col text-center gap-2 md:text-left'>
                     <h2 className={`HeadingS font-semibold`}>{event.name}</h2>

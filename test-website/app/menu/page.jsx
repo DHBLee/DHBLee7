@@ -30,7 +30,7 @@ export default async function menu() {
   return (
     <section className=''>
        <div className='grid place-items-center relative min-h-[200px] md:h-[450px] 1440:h-[700px] max-h-[700px]'>
-         <Image src="/menu-bg.webp" fill alt="Menu BG Img of Mezzalira" className="object-cover" />
+         <Image src="/images/background/menu-bg.webp" fill alt="Menu BG Img of Mezzalira" className="object-cover" />
          <h1 className='absolute z-20 HeadingM tracking-[3px]'>MENU</h1>
        </div>
         <Menu initialMenu={initialMenu} />

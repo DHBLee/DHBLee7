@@ -48,7 +48,7 @@ const HighlightedEvent = () => {
     <div className="fixed top-0 left-0 w-full h-full bg-black/50 grid place-items-center z-[9999]">
       <div className="grid gap-4 text-center bg-Black rounded-xl p-6 max-w-md w-full relative">
         <button onClick={() => setShow(false)} className="absolute top-2 right-2 text-gray-500 hover:text-black" aria-label='an icon letter X'><X /></button>
-        <img src={event.image} alt={event.name} className="rounded-md  w-full h-auto object-cover" />
+        <img src={event.image || '/images/ui/placeholder-img.jpg'} alt={event.name} className="rounded-md  w-full h-auto object-cover" />
         <h2 className="HeadingS font-semibold">{event.name}</h2>
         <p className="Body text-white">{event.description}</p>
         <p className="BodySmall">{event.duration}</p>

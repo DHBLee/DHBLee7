@@ -23,7 +23,7 @@ const texts = [
 const Section2 = () => {
   return (
     <div className="py-[58px] relative grid place-items-center w-full h-auto max-h-[855px] aspect-[2/1]">
-        <Image src="/variety-meets-craft-bg.webp" fill alt="A background picture of the kitchen" quality={100} className="object-cover"/>
+        <Image src="/images/background/variety-meets-craft-bg.webp" fill alt="A background picture of the kitchen" quality={100} className="object-cover"/>
 
         <div className="flex flex-col items-center justify-center gap-[30px] relative px-[24px] md:px-[32px] 1440:px-[86px]">
           <MotionH3

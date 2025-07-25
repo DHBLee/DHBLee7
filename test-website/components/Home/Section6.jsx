@@ -10,12 +10,12 @@ const Section6 = () => {
   return (
     <>
      <section className="px-[24px] md:px-[32px] 1440:px-[86px] py-[78px] relative w-full aspect-[2/1]">
-        <Image src="/wood-fire.webp" fill alt="A Background Picure of a Fire-wood Oven" className="object-cover"/>
+        <Image src="/images/background/wood-fire.webp" fill alt="A Background Picure of a Fire-wood Oven" className="object-cover"/>
 
         <MotionDiv
           ClassName='relative z-20'
         >
-            <img src="/brighter-images-of-places.webp" alt="Images of the interior of Mezzalira Ristorante" />
+            <img src="/images/gallery/brighter-images-of-places.webp" alt="Images of the interior of Mezzalira Ristorante" />
         </MotionDiv>
       </section>
       

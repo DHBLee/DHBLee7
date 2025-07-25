@@ -80,7 +80,7 @@ const Section5 = () => {
           </div>
 
           <Image
-            src="/testimonials-bgi.webp"
+            src="/images.background/testimonials-bgi.webp"
             fill
             alt="Kitchen Background"
             className="w-full object-cover"

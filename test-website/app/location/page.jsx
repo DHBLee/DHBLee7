@@ -56,7 +56,7 @@ const location = () => {
           <img className="w-[300px]" src="/mezzalira-location.png" alt="A screenshot of Mezzalira's Location in Google" />
         </a>
         <a href="https://www.google.com/maps/search/parking+nearby+Mezzalira/@-35.2793489,149.127825,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target='_blank' rel="noopener noreferrer">
-          <img className="w-[300px]" src="/images/ui/parking.png" alt="A screenshot of Nearby Parking in Mezzalira" />
+          <img className="w-[300px]" src="/parking.png" alt="A screenshot of Nearby Parking in Mezzalira" />
         </a>
       </div>
       <ul className='flex flex-col items-center gap-10'>

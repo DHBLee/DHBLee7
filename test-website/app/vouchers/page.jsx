@@ -45,7 +45,7 @@ const Vouchers = () => {
         <div className='flex flex-col items-center gap-4'>
           <h1 className='HeadingM'>VOUCHERS</h1>
           <p className='text-center lg:text-left Body max-w-[50ch]'>Gift vouchers are not redeemable for cash and are for a one time use only. All vouchers must be presented at time of use in original format. We reserve the right to a refuse any voucher that does not match our purchase registration or has been recorded as previously redeemed.</p>
-          <Image unoptimized width={600} height={500} src="/assets/vouchers-gif.gif" alt="A Gif of a Mezzalira Voucher" />
+          <Image unoptimized width={600} height={500} src="/vouchers-gif.gif" alt="A Gif of a Mezzalira Voucher" />
         </div>
         <Voucheriframe />
       </div>

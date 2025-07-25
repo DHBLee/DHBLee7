@@ -32,10 +32,10 @@ const Section1 = () => {
           loop 
           playsInline
           fetchPriority="high"
-          poster="/images/video/mezzalira-video-cover.webp"
+          poster="/mezzalira-video-cover.webp"
           className="w-full min-h-[500px] h-auto object-cover"
         >
-          <source src="/video/mezzalira-video.mp4" type="video/mp4" />
+          <source src="/mezzalira-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className=" px-[24px] md:px-[32px] 1440:px-[86px] z-20 flex flex-col lg:gap-4 items-center text-center absolute top-[50%] left-[50%] translate-[-50%] w-full">

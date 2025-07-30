@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
           href={lora.url} 
           as="font" 
           type="font/woff2" 
-          crossOrigin="anonymous"
+          crossOrigin="anonymous" 
         />
         
         {/* Preload above-the-fold images */}

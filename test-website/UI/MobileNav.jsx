@@ -73,7 +73,7 @@ const MobileNav = ({ links, handleClose }) => {
                         )}
                     </li>
                 ))}
-                <Link href="/reservations">
+                <Link href="/reservations" onClick={() => handleClose(false)}>
                     <button className='text-Black px-[27px] py-[7px] bg-Yellow rounded-[5px]'>
                         RESERVATIONS
                     </button>

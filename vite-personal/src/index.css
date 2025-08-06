@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Space-Grotesk';
+  src: local('SpaceGrotesk'),
+  url('./assets/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space-Grotesk';
+  src: local('SpaceGrotesk Medium'),
+       url('./assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
+  font-weight: 500;  
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Space-Grotesk';
+  src: local('SpaceGrotesk Bold'),
+       url('./assets/fonts/static/SpaceGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700; 
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-Neutral900: hsl(20, 6%, 10%);
+  --color-Neutral800: hsl(20, 5%, 12%);
+  --color-Neutral700: hsl(26, 7%, 19%);
+  --color-Neutral600: hsl(30, 3%, 28%);
+  --color-Neutral400: hsl(0, 1%, 75%);
+  --color-Neutral300: hsl(30, 6%, 86%);
+  --color-Neutral200: hsl(30, 11%, 93%);
+  --color-Neutral100: hsl(30, 33%, 98%);
+  --color-Neutral0: hsl(0, 0%, 100%);
+
+
+  --color-Blue900: hsl(206, 95%, 15%);
+  --color-Blue800: hsl(206, 45%, 55%);
+  --color-Blue700: hsl(206, 61%, 66%);
+  --color-Blue500: hsl(206, 95%, 78%);
+  --color-Blue200: hsl(207, 94%, 94%);
+
+  --color-Green900: hsl(133, 38%, 12%);
+  --color-Green700: hsl(142, 100%, 26%);
+  --color-Green500: hsl(133, 38%, 72%);
+  
+  --color-Yellow900: hsl(38, 92%, 15%);
+  --color-Yellow700: hsl(38, 95%, 47%);
+  --color-Yellow500: hsl(39, 93%, 73%);
+  --color-Yellow200: hsl(40, 100%, 94%);
+
+  --color-Red600: hsl(4, 74%, 49%);
+  --color-Red400: hsl(4, 86%, 58%);
+  
+  --breakpoint-1597: 99.8125rem;
+  --breakpoint-1440: 90rem;
+
+  --breakpoint-768: 47.5rem;
+
+}
+
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    transition: color 0.3s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    background-color: white;
+    /* @media(min-width: 768px) {
+        background-image: url('./assets/images/pattern-background-tablet-light.svg');
+    }
+    @media(min-width: 1440px) {
+        background-image: url('./assets/images/pattern-background-desktop-light.svg');
+    } */
+  }
+  /* html.dark, html.dark body {
+    background-color: var(--color-Slate1000);
+  } */
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    height: 100vh;
+  }
+
+  body {
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    font-family: 'Space-Grotesk', sans-serif; 
+    background-color: var(--color-LightPurple);
+  }
+
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    user-select: none;
+  }
+
+  svg {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+
+  span,
+  h1, h2, h3, h4, h5, h6,
+  p {
+    display: inline-block;
+  }
+
+  ol, ul {
+    margin-left: 0;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  
+
+  ul li::marker {
+    font-size: 0.7rem;
+  }
+
+  a {
+
+    color: inherit;
+    cursor: pointer;
+  }
+
+  input {
+    font-size: inherit;
+    border: none;
+    font-family: inherit;
+    background-color: inherit;
+
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  textarea {
+    font-size: inherit;
+    border: none;
+    font-family: inherit;
+    line-height: 1.5;
+    background-color: inherit;
+
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+ 
+
+  /* progress {
+    width: 100%;
+    height: 1rem;
+    border-radius: 40px;
+    background: white;
+    margin: 0;
+  }
+  .dark progress {
+    background: var(--color-Slate600);
+  }
+  progress::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: 40px;
+    height: 0.6rem;
+
+
+  }
+  progress::-webkit-progress-value {
+    position: relative;
+    top:-0.02rem;
+    background: var(--color-Slate600);
+    border-radius: 40px;
+    margin: 0.2rem;
+    height: 0.6rem;
+
+  }
+   .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+  }
+  .switch:hover .slider.round:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 26px;
+    bottom: 4px;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+
+  .switch:hover .slider:before {
+    background-color: white;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-Slate600);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 27px;
+    bottom: 6px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background: var(--color-Slate600);
+  }
+  
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(-21px);
+    -ms-transform: translateX(-21px);
+    transform: translateX(-21px);
+    background-color: white;
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+
+  }
+   */
+
+
+}
+
+
+@layer components {
+
+ .HeadingL {
+  @apply text-[56px] leading-[71px] font-bold;
+ }
+ .HeadingM {
+  @apply text-[24px] leading-[31px] font-bold;
+ }
+ .HeadingS {
+  @apply text-[20px] leading-[26px] font-bold;
+ }
+ .HeadingXS, .Body {
+  @apply text-[16px] leading-[21px];
+ }
+ .HeadingXS {
+  @apply font-bold
+ }
+ .PlayerName {
+  @apply text-[16px] md:text-[20px] leading-[21px] md:leading-[26px] font-bold;
+ }
+ .Body {
+  @apply font-medium;
+ }
+}

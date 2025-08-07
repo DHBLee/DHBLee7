@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import Button from './Button';
 import Link from 'next/link';
 
-const API_URL = 'https://api.sheetbest.com/sheets/6b54a76a-271c-4df0-9126-5c7481bcd075/tabs/events';
+const API_URL = 'https://api.sheetbest.com/sheets/3e8b5c1e-ce48-41f6-bd85-8364baaee76b/tabs/events';
 
 
 const isValidEvent = (event) => {

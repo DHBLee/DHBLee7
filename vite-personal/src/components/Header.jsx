@@ -5,6 +5,7 @@ import menu from '../assets/images/icon-menu.svg'
 import close from '../assets/images/icon-menu-close.svg'
 import avatar from '../assets/images/image-avatar.jpg'
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 // Define navigation items
 const navigationItems = [
     { name: 'Home', path:'/' },
@@ -29,7 +30,9 @@ const Header = ({ activePage, setActivePage }) => {
     return (
         <>
             <header className='sticky bg-Neutral0 dark:bg-Neutral800 border-1 border-Neutral200 dark:border-Neutral700 flex items-center justify-between rounded-2xl p-3 transition-colors duration-300 ease-in-out'>
-                <img src={avatar} alt="Avatar Image" className='rounded-xl w-10' />
+                <Link to="/">
+                    <img src={avatar} alt="Avatar Image" className='rounded-xl w-10' />
+                </Link>
         
                 <nav className='hidden md:block'>
                     <ul className='flex items-center gap-4'>
@@ -38,7 +41,7 @@ const Header = ({ activePage, setActivePage }) => {
                                 <Link to={item.path}
                                       className={`px-3 py-2 rounded-lg transition-colors duration-300 ease-in-out ${
                                         location.pathname === item.path 
-                                            ? 'bg-Neutral200 dark:bg-Neutral700' 
+                                            ? 'underline decoration-[4px] decoration-Blue500 dark:text-Neutral0' 
                                             : 'text-Neutral600 dark:text-Neutral400'
                                     }`}    
                                 >
@@ -63,26 +66,35 @@ const Header = ({ activePage, setActivePage }) => {
                 </nav>
             </header>
 
+            <AnimatePresence>
             {isMobileMenuOpen && (
-                <div className='h-auto mt-4 w-full bg-Neutral0 dark:bg-Neutral800 transition-colors duration-300 ease-in-out'>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className='h-auto mt-4 w-full bg-Neutral0 dark:bg-Neutral800 transition-colors duration-300 ease-in-out'
+                >
                     <ul className='rounded-xl border-1 border-Neutral200 dark:border-Neutral700 shadow-b-Neutral900 flex flex-col items-start w-full gap-2 p-3 transition-colors duration-300 ease-in-out'>
                         {navigationItems.map((item, index) => (
                             <li key={index} className='w-full not:last-child:border-b-1 border-Neutral200 dark:border-Neutral700'>
                                 <Link 
                                     to={item.path}
+                                    onClick={() => setIsMobileMenuOpen(false)}
                                     className={`px-3 py-2 rounded-lg transition-colors duration-300 ease-in-out ${
                                         location.pathname === item.path 
-                                            ? 'bg-Neutral200 dark:bg-Neutral700' 
+                                            ? 'underline decoration-[4px] decoration-Blue500 dark:text-Neutral0' 
                                             : 'text-Neutral600 dark:text-Neutral400'
-                                    }`}
+                                    }`}  
                                 >
                                     {item.name}
                                 </Link>
                             </li>
                         ))}
                     </ul>
-                </div>
+                </motion.div>
             )}
+            </AnimatePresence>
         </>
     )
 }

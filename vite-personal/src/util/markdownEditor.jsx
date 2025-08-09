@@ -204,12 +204,12 @@ function parseCodeBlock(block, index) {
 
 function parseHeaders(block, index) {
   const headerConfigs = [
-    { prefix: '###### ', tag: 'h6', className: 'text-lg font-bold mt-6 mb-3' },
-    { prefix: '##### ', tag: 'h5', className: 'text-xl font-bold mt-6 mb-3' },
-    { prefix: '#### ', tag: 'h4', className: 'text-2xl font-bold mt-6 mb-3' },
-    { prefix: '### ', tag: 'h3', className: 'text-3xl font-bold mt-6 mb-3' },
-    { prefix: '## ', tag: 'h2', className: 'text-4xl font-bold mt-8 mb-4' },
-    { prefix: '# ', tag: 'h1', className: 'text-5xl font-bold mt-8 mb-4' }
+    { prefix: '###### ', tag: 'h6', className: 'H7 mt-6 mb-3 dark:text-Neutral0' },
+    { prefix: '##### ', tag: 'h5', className: 'H6 mt-6 mb-3 dark:text-Neutral0' },
+    { prefix: '#### ', tag: 'h4', className: 'H5 mt-6 mb-3 dark:text-Neutral0' },
+    { prefix: '### ', tag: 'h3', className: 'H4 mt-6 mb-3 dark:text-Neutral0' },
+    { prefix: '## ', tag: 'h2', className: 'H3 mt-8 mb-4 dark:text-Neutral0' },
+    { prefix: '# ', tag: 'h1', className: 'H1 mt-8 mb-4 dark:text-Neutral0' }
   ]
   
   for (const { prefix, tag, className } of headerConfigs) {
@@ -249,7 +249,7 @@ function parseLists(block, index) {
   if (block.startsWith('- ')) {
     const items = block.split('\n')
     return (
-      <ul key={index} className="list-disc pl-8 my-4 space-y-2">
+      <ul key={index} className="H7 text-Neutral600 dark:text-Neutral400 list-disc pl-8 my-4 space-y-2">
         {items.map((item, i) => (
           <li key={i}>{parseInlineMarkdown(item.substring(2))}</li>
         ))}
@@ -261,7 +261,7 @@ function parseLists(block, index) {
   if (/^\d+\.\s/.test(block)) {
     const items = block.split('\n')
     return (
-      <ol key={index} className="list-decimal pl-8 my-4 space-y-2">
+      <ol key={index} className="H7 text-Neutral600 dark:text-Neutral400 list-decimal pl-8 my-4 space-y-2">
         {items.map((item, i) => {
           const match = item.match(/^\d+\.\s(.*)/)
           return (
@@ -322,7 +322,7 @@ function parseTable(block, index) {
 function parseParagraph(block, index) {
   // This is the fallback parser - always returns a result
   return (
-    <p key={index} className="my-4 leading-relaxed">
+    <p key={index} className="text-Neutral600 dark:text-Neutral400 H7 my-4 leading-relaxed">
       {parseInlineMarkdown(block)}
     </p>
   )

@@ -1,33 +1,34 @@
 @import "tailwindcss";
 
+/* DM Sans - Variable Font */
 @font-face {
-  font-family: 'Space-Grotesk';
-  src: local('SpaceGrotesk'),
-  url('./assets/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype-variations');
+  font-family: 'DM Sans';
+  src: local('DM Sans'),
+       url('./assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype-variations');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
+/* DM Sans - Italic Variable Font */
 @font-face {
-  font-family: 'Space-Grotesk';
-  src: local('SpaceGrotesk Medium'),
-       url('./assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
-  font-weight: 500;  
-  font-style: normal;
+  font-family: 'DM Sans';
+  src: local('DM Sans Italic'),
+       url('./assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
   font-display: swap;
 }
 
-
+/* Fira Code - Monospace Font */
 @font-face {
-  font-family: 'Space-Grotesk';
-  src: local('SpaceGrotesk Bold'),
-       url('./assets/fonts/static/SpaceGrotesk-Bold.ttf') format('truetype');
-  font-weight: 700; 
+  font-family: 'Fira Code';
+  src: local('Fira Code'),
+       url('./assets/fonts/Fira_Code/FiraCode-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
-
 
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -110,11 +111,15 @@
     min-height: 100vh;
     height: auto;
     overflow-x: hidden;
-    font-family: 'Space-Grotesk', sans-serif; 
+    font-family: 'DM Sans', sans-serif; 
     background-color: var(--color-LightPurple);
   }
 
 
+  hr {
+    color: var(--color-Neutral200);
+  }
+  
   img,
   picture,
   video,
@@ -309,25 +314,39 @@
 
 @layer components {
 
- .HeadingL {
-  @apply text-[56px] leading-[71px] font-bold;
+ .H1 {
+  @apply font-extrabold text-[40px] leading-[130%] tracking-[-1px];
  }
- .HeadingM {
-  @apply text-[24px] leading-[31px] font-bold;
+ .H2 {
+  @apply font-extrabold text-[32px] leading-[130%] tracking-[-0.5px]
  }
- .HeadingS {
-  @apply text-[20px] leading-[26px] font-bold;
+ .H3 {
+  @apply font-bold text-[28px] leading-[130%] tracking-[-0.5px]
  }
- .HeadingXS, .Body {
-  @apply text-[16px] leading-[21px];
+ .H4 {
+  @apply font-semibold text-[24px] leading-[130%] tracking-[-0.5px]
  }
- .HeadingXS {
-  @apply font-bold
+ .H5 {
+  @apply font-semibold text-[20px] leading-[130%] tracking-[-0.5px]
  }
- .PlayerName {
-  @apply text-[16px] md:text-[20px] leading-[21px] md:leading-[26px] font-bold;
+ .H6 {
+  @apply font-medium text-[18px] leading-[150%] tracking-[-0.5px]
  }
- .Body {
-  @apply font-medium;
+ .H7, .H7semibold {
+  @apply font-normal text-[18px] leading-[150%] tracking-[-0.2px]
+ }    
+ .H7semibold {
+  @apply font-semibold
  }
+ .H8, .H8italic {
+  @apply font-normal text-[16px] leading-[130%] tracking-[-0.2px]
+ }
+ .H8italic {
+  @apply italic
+ }
+ .H9 {
+  @apply font-normal font-mono text-[16px] leading-[146%] tracking-[-0.4px];
+  font-family: 'Fira Code', monospace;
+ }
+ 
 }

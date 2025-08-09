@@ -12,8 +12,8 @@ const SingleBlog = () => {
     <div className="max-w-3xl mx-auto px-4 py-8">
       {blog ? (
         <>
-          <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
-          <p className="text-gray-600 mb-8">{new Date(blog.publishedAt).toLocaleDateString('en-US', { 
+          <h1 className="H1 dark:text-Neutral0">{blog.title}</h1>
+          <p className="H8italic text-Neutral600 dark:text-Neutral400">{new Date(blog.publishedAt).toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'long', 
             day: 'numeric' 

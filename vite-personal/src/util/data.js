@@ -1,23 +1,28 @@
+import xIcon from '../assets/images/logo-x.svg?url'
+import githubIcon from '../assets/images/logo-github.svg?url'
+import linkedinIcon from '../assets/images/logo-linkedin.svg?url'
+import frontendMentorIcon from '../assets/images/logo-frontend-mentor.svg?url'
+
 export const icons = [
   {
     name: 'x',
     url: 'https://x.com',
-    icon: '../assets/images/logo-x.svg'
+    icon: xIcon
   },
   {
     name: 'github',
     url: 'https://github.com',
-    icon: '../assets/images/logo-github.svg'
+    icon: githubIcon
   },
   {
     name: 'linkedin',
     url: 'https://linkedin.com',
-    icon: '../assets/images/logo-linkedin.svg'
+    icon: linkedinIcon
   },
   {
     name: 'frontend-mentor',
     url: 'https://frontend-mentor.com',
-    icon: '../assets/images/logo-frontend-mentor.svg'
+    icon: frontendMentorIcon
   }
 ]
 

@@ -50,12 +50,13 @@ Users should be able to:
 ### Links
 
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/DHBLee/DHBLee7/tree/DHBLee/Fronend-Mentor/Personal/vite-personal)
+- Live Site URL: [Add live site URL here](https://dhb-lee7-xg2i.vercel.app/)
 
 
 ## My process
 
+Used Vite, React, TailwindCss, Framer Motion
 
 ### Built with
 
@@ -74,12 +75,12 @@ Users should be able to:
 
 ### What I learned
 
-
+I learned more about React
 
 
 ### Continued development
 
-
+Better, more efficient, scalable, and cleaner code in the future
 
 
 ### Useful resources

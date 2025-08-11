@@ -3,7 +3,8 @@
 
 import MobileNav from '@/UI/MobileNav'
 import { AnimatePresence } from 'framer-motion'
-import { Menu } from 'lucide-react'
+import { Menu } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -42,6 +43,11 @@ const links = [
         name: "LOCATION",
         ref: "/location"
     },
+    {
+        name: "ORDER PICK-UP",
+        ref: "https://orders.wowapps.com/order/mezzalira?src=web",
+        external: true
+    }
 ]
 
 // const moreLinks = [
@@ -56,13 +62,20 @@ const links = [
 //     {
 //         name: "LOCATION",
 //         ref: "/location"
-//     },
-// ]
 const Header = () => {
   const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false);
   return (
     <header className='fixed w-full top-0 z-50 bg-black/10 backdrop-blur-xs flex justify-between items-center py-[12px] 1440:py-[24px] px-[24px] md:px-[32px] 1440:px-[86px]'>
-        <Link href="/" className='HeadingS'>MEZZALIRA RISTORANTE</Link>
+        <Link href="/" className='HeadingS'>
+            <Image 
+              src="/mezzaliralogo.png" 
+              alt="Mezzalira Logo" 
+              width={200} 
+              height={40} 
+              priority
+              className='w-[4rem] h-auto'
+            />
+        </Link>
         <nav className='hidden lg:block'>
             <ul className='flex items-center gap-5 BodySmall'>
                 {links.map(link => (

@@ -1,3 +1,9 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // next.config.mjs
 const securityHeaders = [
   {
@@ -58,4 +64,10 @@ const nextConfig = {
   },
   // Enable compression for better performance
   compress: true,
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.join(__dirname, './');
+    return config;
+  },
 }
+
+export default nextConfig;

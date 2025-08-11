@@ -1,10 +1,11 @@
 import Footer from '@/components/Footer';
 import { lora } from './fonts'
 import "./globals.css";
-import Header from "@/components/Header";
 import HighlightedEvent from '@/UI/HighlightedEvent';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
+import OrderPickupButton from '@/components/OrderPickupButton';
+import Header from '@/components/Header';
 export const metadata = {
   title: {
     default: "Mezzalira Ristorante | Best State List Winner in Canberra",
@@ -140,6 +141,7 @@ export default function RootLayout({ children }) {
 
         <SpeedInsights />
         <Analytics />
+        <OrderPickupButton />
       </body>
     </html>
   );

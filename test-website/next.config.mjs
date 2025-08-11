@@ -59,7 +59,7 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Enable React's concurrent features
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false,
     scrollRestoration: true,
   },
   // Enable compression for better performance

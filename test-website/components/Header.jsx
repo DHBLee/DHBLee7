@@ -7,7 +7,8 @@ import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
 import React, { useState } from 'react'
-
+import OrderPickupButton from './OrderPickupButton';
+import { ShoppingBag } from 'lucide-react';
 
 const links = [
     {
@@ -66,6 +67,9 @@ const Header = () => {
   const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false);
   return (
     <header className='fixed w-full top-0 z-50 bg-black/10 backdrop-blur-xs flex justify-between items-center py-[12px] 1440:py-[24px] px-[24px] md:px-[32px] 1440:px-[86px]'>
+        <a href="https://orders.wowapps.com/order/mezzalira?src=web" target="_blank" rel="noopener noreferrer" className='lg:hidden' alt="Order Pick-up">
+            <ShoppingBag />
+        </a>
         <Link href="/" className='HeadingS'>
             <Image 
               src="/mezzaliralogo.png" 

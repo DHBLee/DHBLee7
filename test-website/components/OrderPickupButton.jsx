@@ -19,7 +19,7 @@ const OrderPickupButton = () => {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 bg-Yellow text-black rounded-full shadow-lg flex items-center justify-center overflow-hidden"
+      className="hidden lg:flex fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 bg-Yellow text-black rounded-full shadow-lg items-center justify-center overflow-hidden"
       style={{ 
         width: isHovered ? '180px' : '64px', 
         height: '64px',

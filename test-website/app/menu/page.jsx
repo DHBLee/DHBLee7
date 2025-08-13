@@ -1,8 +1,8 @@
+
 import React from 'react'
 import Menu from '../../components/Menu'
-import Image from 'next/image'
 import { fetchSheetData } from '@/util/fetchSheetData'
-
+import Image from 'next/image'
 export const metadata = {
   title: "Menu | Mezzalira Ristorante",
   description: "Explore our curated Italian menu featuring handmade pasta, premium wines, and seasonal specialties.",
@@ -25,16 +25,36 @@ export const metadata = {
 
 
 
-export default async function menu() {
+export default async function MenuPage() {
   const initialMenu = await fetchSheetData('menu');
   return (
-    <section className=''>
-       <div className='grid place-items-center relative min-h-[200px] md:h-[450px] 1440:h-[700px] max-h-[700px]'>
-         <Image src="/images/background/menu-bg.webp" fill alt="Menu BG Img of Mezzalira" className="object-cover" />
-         <h1 className='absolute z-20 HeadingM tracking-[3px]'>MENU</h1>
-       </div>
-        <Menu initialMenu={initialMenu} />
-     </section>
+    <section className='flex flex-col'>
+      <div className="relative hidden lg:block h-[400px] w-full">
+        <Image
+          src="/images/background/wood-fire.webp"
+          fill
+          alt="A dining table setup at Mezzalira"
+          className="object-cover absolute inset-0"
+          priority
+        />
+        <h1 className="absolute top-[50%] left-[50%] translate-[-50%] z-20 HeadingM tracking-[3px]">MENU</h1>
+      </div>
+      <div className="lg:grid lg:grid-cols-2 ">
+          <div className='lg:sticky lg:top-0 lg:h-screen'>
+              <div className="relative h-[600px] lg:h-screen">
+                  <Image
+                    src="/images/background/menu-bg.webp"
+                    fill
+                    alt="A selection of dishes from Mezzalira's menu"
+                    className="object-cover"
+                    priority
+                  />
+                  <h1 className="absolute top-[50%] left-[50%] translate-[-50%] z-20 HeadingL tracking-[3px] lg:hidden">MENU</h1>
+              </div>
+          </div>
+          <Menu initialMenu={initialMenu} />
+      </div>
+    </section>
   )
 }
 

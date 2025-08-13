@@ -6,8 +6,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
-import React, { useState } from 'react'
-import OrderPickupButton from './OrderPickupButton';
+import React, { useState, useRef, useEffect } from 'react'
 import { ShoppingBag } from 'lucide-react';
 
 const links = [
@@ -48,6 +47,10 @@ const links = [
         name: "ORDER PICK-UP",
         ref: "https://orders.wowapps.com/order/mezzalira?src=web",
         external: true
+    },
+    {
+        name: "TEST",
+        ref: "/test"
     }
 ]
 
@@ -65,8 +68,41 @@ const links = [
 //         ref: "/location"
 const Header = () => {
   const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+            // Scrolling down
+            if (showHeader) setShowHeader(false);
+          } else {
+            // Scrolling up
+            if (!showHeader) setShowHeader(true);
+          }
+          lastScrollY.current = currentScrollY;
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showHeader]);
+
   return (
-    <header className='fixed w-full top-0 z-50 bg-black/10 backdrop-blur-xs flex justify-between items-center py-[12px] 1440:py-[24px] px-[24px] md:px-[32px] 1440:px-[86px]'>
+    <header
+    className={`fixed w-full top-0 z-50 bg-black/10 backdrop-blur-xs flex justify-between items-center py-2 px-[24px] md:px-[32px] 1440:px-[86px] transition-transform duration-300 ${
+        showHeader ? 'translate-y-0' : '-translate-y-full'
+    }`}
+    >
         <a href="https://orders.wowapps.com/order/mezzalira?src=web" target="_blank" rel="noopener noreferrer" className='lg:hidden' alt="Order Pick-up">
             <ShoppingBag />
         </a>
@@ -107,7 +143,7 @@ const Header = () => {
                 </li> */}
                 <li>
                     <Link href="/reservations">
-                        <button className='px-[27px] py-[7px] bg-Black hover:text-Black hover:bg-Yellow transition-colors duration-300 rounded-[5px]'>
+                        <button  className='px-[27px] py-[7px] bg-Black hover:text-Black hover:bg-Yellow transition-colors duration-300 rounded-[5px]'>
                             RESERVATIONS
                         </button>
                     </Link>

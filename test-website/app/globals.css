@@ -186,6 +186,10 @@
     border: none;
   }
 
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
 }
 
 @layer components {

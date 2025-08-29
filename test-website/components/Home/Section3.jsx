@@ -13,8 +13,8 @@ const texts = [
 
 const Section3 = () => {
   return (
-    <div className="px-[24px] md:px-[32px] 1440:px-[86px] py-[27px] relative w-full min-h-[300px] h-full 1440:h-[755px]">
-        <Image src="/images/background/landmark-bg.webp" fill  alt="Picture of Mezzalira outside" className="absolute object-cover"/>
+    <div className="px-[24px] md:px-[32px] 1440:px-[86px] py-[27px] 1440:py-[100px] 1860:py-[200px] relative w-full min-h-[300px] h-full">
+        <Image src="/images/background/landmark-bg.webp" fill  alt="Picture of Mezzalira outside" className="object-cover"/>
          
         <MotionDiv
             ClassName='mx-auto lg:mx-0 lg:ml-auto min-w-[300px] w-full max-w-[505px]  right-0 h-full flex items-center gap-[74px] backdrop-blur-xs rounded-[5px]'

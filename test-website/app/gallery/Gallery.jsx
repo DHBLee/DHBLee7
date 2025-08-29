@@ -127,8 +127,8 @@ useEffect(() => {
                     placeholder="blur"
                     blurDataURL="/blur-placeholder.png"
                   />
-                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="bg-white/90 rounded-full p-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-black/10 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-white/90 rounded-full p-2 transform translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                       </svg>

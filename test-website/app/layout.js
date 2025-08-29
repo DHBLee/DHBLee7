@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
               "@type": "Restaurant",
               "name": "Mezzalira Ristorante",
               "description": "Award-winning Italian restaurant in Canberra",
-              "url": "https://your-domain.com",
+              "url": "https://mezzalira.com.au",
               "telephone": "+(02)-6230-0025",
               "address": {
                 "@type": "PostalAddress",

@@ -48,10 +48,7 @@ const links = [
         ref: "https://orders.wowapps.com/order/mezzalira?src=web",
         external: true
     },
-    {
-        name: "TEST",
-        ref: "/test"
-    }
+
 ]
 
 // const moreLinks = [

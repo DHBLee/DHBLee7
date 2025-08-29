@@ -41,7 +41,7 @@ const Section5 = () => {
   const currentTestimonial = testimonials2[testimonialIndex];
 
   return (
-     <section className=" h-full lg:h-[500px] 1440:h-[700px] flex flex-col-reverse lg:flex-row relative">
+     <section className=" h-full lg:h-[500px] 1440:h-[700px]  1860:h-[900px] flex flex-col-reverse lg:flex-row relative">
       {/* Left Side: Testimonial */}
         <article className="grid place-items-center relative lg:w-1/2 h-full py-[32px]">
 

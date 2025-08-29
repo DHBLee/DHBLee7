@@ -98,7 +98,7 @@ const Menu = ({ initialMenu }) => {
                           key={cat}
                           onClick={() => handleCategorySelect(cat)}
                           aria-pressed={selectedCategory === cat}
-                          className={selectedCategory === cat ? 'uppercase underline' : 'uppercase'}
+                          className={selectedCategory === cat ? 'capitalize underline' : 'capitalize'}
                         >
                           {cat}
                         </button>

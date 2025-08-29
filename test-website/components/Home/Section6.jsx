@@ -22,10 +22,10 @@ const Section6 = () => {
       <section className='bg-[#333333]'>
         <MotionDiv
           transition={{ duration: 0.6 }}
-          ClassName=' py-[41px] grid place-items-center gap-6 px-[24px] md:px-[32px] 1440:px-[86px] w-full text-center'
+          ClassName=' py-[41px] 1440:py-[70px] grid place-items-center gap-6 px-[24px] md:px-[32px] 1440:px-[86px] w-full text-center'
         >
           <h2 className={`${lora.className} HeadingM`}>Memorable Meals, Together</h2>
-          <p className={`Body ${workSans.className}`}>Our function menu, perfect for private events and group dining, our curated function menus feature seasonal produce and a choice of set, shared, or tasting experiences—crafted for memorable celebrations.</p>
+          <p className={`Body ${workSans.className} max-w-[90ch]`}>Our function menu, perfect for private events and group dining, our curated function menus feature seasonal produce and a choice of set, shared, or tasting experiences—crafted for memorable celebrations.</p>
           <Link href="/menu">
             <Button>
                 Function Menu

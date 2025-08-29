@@ -6,6 +6,7 @@
   --color-maroon: #1C0701;
 
   --breakpoint-1440: 90rem;
+  --breakpoint-1860:116.25rem;
 }
 
 @layer base {
@@ -206,7 +207,7 @@
    @apply text-[clamp(1rem,0.6905940594059405rem+1.3201320132013201vw,1.25rem)] leading-[1.5]
   }
   .Body {
-    @apply text-[clamp(0.75rem,0.4405940594059406rem+1.3201320132013201vw,1rem)] leading-[2]
+    @apply text-[clamp(0.75rem,0.4405940594059406rem+1.3201320132013201vw,1rem)] leading-[2] tracking-[1px]
   }
   .BodySmall {
     @apply text-[clamp(0.625rem,0.47029702970297027rem+0.6600660066006601vw,0.75rem)] leading-[1.5]

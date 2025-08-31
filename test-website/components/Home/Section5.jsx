@@ -41,7 +41,7 @@ const Section5 = () => {
   const currentTestimonial = testimonials2[testimonialIndex];
 
   return (
-     <section className=" h-full lg:h-[500px] 1440:h-[700px]  1860:h-[900px] flex flex-col-reverse lg:flex-row relative">
+     <section className="h-screen flex flex-col-reverse lg:flex-row relative">
       {/* Left Side: Testimonial */}
         <article className="grid place-items-center relative lg:w-1/2 h-full py-[32px]">
 
@@ -89,7 +89,7 @@ const Section5 = () => {
         </article>
 
         {/* Right Side: Autoplay Image */}
-       <figure className="relative lg:w-1/2 h-[400px] lg:h-full overflow-hidden">
+       <figure className="relative lg:w-1/2 h-[100%] lg:h-full overflow-hidden">
           <motion.div
             animate={{ x: `-${imageIndex * (100 / (slideshowImages.length + 1))}%` }}
             transition={isTransitioning ? { duration: 0.6, ease: 'easeInOut' } : { duration: 0 }}

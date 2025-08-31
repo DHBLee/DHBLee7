@@ -13,16 +13,16 @@ const texts = [
 
 const Section3 = () => {
   return (
-    <div className="px-[24px] md:px-[32px] 1440:px-[86px] py-[27px] 1440:py-[100px] 1860:py-[200px] relative w-full min-h-[300px] h-full">
+    <div className="px-[24px] md:px-[32px] 1440:px-[86px] relative w-full h-screen">
         <Image src="/images/background/landmark-bg.webp" fill  alt="Picture of Mezzalira outside" className="object-cover"/>
          
         <MotionDiv
-            ClassName='mx-auto lg:mx-0 lg:ml-auto min-w-[300px] w-full max-w-[505px]  right-0 h-full flex items-center gap-[74px] backdrop-blur-xs rounded-[5px]'
+            ClassName='mx-auto lg:mx-0 lg:ml-auto min-w-[300px] w-full max-w-[40%] h-screen flex items-center gap-[74px] backdrop-blur-xs'
         >
 
             <div className="flex flex-col items-center lg:items-start gap-7">
               {texts.map((text, idx) => (
-                <p key={idx} className='Body text-center lg:text-left '>{text}</p>
+                <p key={idx} className='Body text-center lg:text-left'>{text}</p>
               ))}
 
               <Link href="/location">

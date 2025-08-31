@@ -44,3 +44,45 @@ export const slideshowImages = [
   '/images/gallery/gallery (8).webp',
   '/images/gallery/gallery (5).webp',
 ]
+
+export const links = [
+    {
+        name: "ITALIANS & SONS",
+        ref: "https://italianandsons.com.au/",
+        external: true
+    },
+    {
+        name: "MENU",
+        ref: "/menu"
+    },
+    {
+        name: "GALLERY",
+        ref: "/gallery"
+    },
+    {
+        name: "EVENTS",
+        ref: "/events"
+    },
+    {
+        name: "CONTACT",
+        ref: "#footer"
+    },
+    {
+        name: "FAQ",
+        ref: "/faq"
+    },
+    {
+        name: "VOUCHERS",
+        ref: "/vouchers"
+    },
+    {
+        name: "LOCATION",
+        ref: "/location"
+    },
+    {
+        name: "ORDER PICK-UP",
+        ref: "https://orders.wowapps.com/order/mezzalira?src=web",
+        external: true
+    },
+
+]

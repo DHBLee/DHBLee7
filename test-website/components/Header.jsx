@@ -8,48 +8,10 @@ import Image from 'next/image';
 import Link from 'next/link'
 import React, { useState, useRef, useEffect } from 'react'
 import { ShoppingBag } from 'lucide-react';
+import { links } from '@/util/data';
+import { usePathname } from 'next/navigation';
 
-const links = [
-    {
-        name: "ITALIANS & SONS",
-        ref: "https://italianandsons.com.au/",
-        external: true
-    },
-    {
-        name: "MENU",
-        ref: "/menu"
-    },
-    {
-        name: "GALLERY",
-        ref: "/gallery"
-    },
-    {
-        name: "EVENTS",
-        ref: "/events"
-    },
-    {
-        name: "CONTACT",
-        ref: "#footer"
-    },
-    {
-        name: "FAQ",
-        ref: "/faq"
-    },
-    {
-        name: "VOUCHERS",
-        ref: "/vouchers"
-    },
-    {
-        name: "LOCATION",
-        ref: "/location"
-    },
-    {
-        name: "ORDER PICK-UP",
-        ref: "https://orders.wowapps.com/order/mezzalira?src=web",
-        external: true
-    },
 
-]
 
 // const moreLinks = [
 //     {
@@ -69,6 +31,7 @@ const Header = () => {
 
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,18 +78,27 @@ const Header = () => {
         </Link>
         <nav className='hidden lg:block'>
             <ul className='flex items-center gap-5 BodySmall'>
-                {links.map(link => (
-                    <li key={link.name} className='list-none animated-underline'>
-                        {link.external ? (
-                            <a href={link.ref} target="_blank" rel="noopener noreferrer">{link.name}</a>
-                        ) : (
-                            <Link href={link.ref}>    
-                                {link.name}
-                            </Link>
-                        )}
-                    </li>
-                ))}
-                {/* <li className="relative group list-none">
+                {links.map(link => {
+                        // 3. Check if the link is active
+                        const isActive = pathname === link.ref;
+
+                        return (
+                            <li
+                                key={link.name}
+                                // 4. Conditionally apply the active class
+                                className={`list-none animated-underline ${isActive ? 'active-link' : ''}`}
+                            >
+                                {link.external ? (
+                                    <a href={link.ref} target="_blank" rel="noopener noreferrer">{link.name}</a>
+                                ) : (
+                                    <Link href={link.ref}>
+                                        {link.name}
+                                    </Link>
+                                )}
+                            </li>
+                        );
+                    })}
+                    {/* <li className="relative group list-none">
                     <button className="cursor-pointer">MORE</button>
                     <ul className="absolute top-full left-0 bg-[#333333] text-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 min-w-[160px] z-50">
                         {moreLinks.map(link => (

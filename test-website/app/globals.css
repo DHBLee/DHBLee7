@@ -147,7 +147,7 @@
   transition: width 0.3s ease-in-out;
 }
 
-.animated-underline:hover::after {
+.animated-underline:hover::after, .active-link.animated-underline::after {
   width: 100%;
 }
 

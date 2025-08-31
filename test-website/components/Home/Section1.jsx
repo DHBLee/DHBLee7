@@ -24,7 +24,7 @@ const letter = {
 const Section1 = () => {
     
   return (
-    <div className="relative max-h-[780px]">
+    <div className="relative h-screen">
         <video
           aria-label='A Compilation Video of Mezzalira'
           autoPlay
@@ -33,9 +33,9 @@ const Section1 = () => {
           playsInline
           fetchPriority="high"
           poster="/mezzalira-video-cover.webp"
-          className="w-full min-h-[500px] h-auto object-cover"
+          className="h-screen w-full object-cover"
         >
-          <source src="/mezzalira-video.mp4" type="video/mp4" />
+          <source src="/mezzalira-video.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
         <div className=" px-[24px] md:px-[32px] 1440:px-[86px] z-20 flex flex-col lg:gap-4 items-center text-center absolute top-[50%] left-[50%] translate-[-50%] w-full">
@@ -44,7 +44,7 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="HeadingL leading-[50px]"
+            className="HeadingL 1860:text-[6rem] leading-[50px]"
           >
             MEZZALIRA RISTORANTE
           </motion.h1>
@@ -64,8 +64,7 @@ const Section1 = () => {
           </motion.h2>
         </div>
 
-        <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
-        <div className="absolute bottom-0 left-0 w-full h-[154px] bg-gradient-to-t from-black/100 to-transparent pointer-events-none" />
+       
       </div>
   )
 }

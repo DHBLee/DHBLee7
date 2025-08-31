@@ -21,7 +21,7 @@ const Section4 = () => {
   }, [])
 
   return (
-    <div className="px-[24px] md:px-[32px] 1440:px-[86px] py-[78px] 1440:py-[100px] relative w-full min-h-[350px] h-full aspect-[2/1]">
+    <div className="px-[24px] md:px-[32px] 1440:px-[86px] py-[78px] 1440:py-[100px] relative w-full h-screen aspect-[2/1]">
         <div className="absolute inset-0">
           <Image
             src={wineImages[currentIndex]}

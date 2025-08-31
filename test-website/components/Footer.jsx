@@ -1,11 +1,20 @@
 import React from 'react'
 import { Facebook, X, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 const Footer = () => {
   return (
     <footer id="footer" className='relative px-[24px] md:px-[32px] 1440:px-[86px] py-[60px] bg-Black flex flex-col 1440:flex-row items-center 1440:items-start gap-[3rem] justify-between'>
-        <h2 className='HeadingS'>MEZZALIRA RISTORANTE</h2>
+        <Image 
+            src="/mezzaliralogo.png" 
+            alt="Mezzalira Logo" 
+            width={200} 
+            height={40} 
+            priority
+            className='w-[6rem] h-auto'
+        />
         <section className='flex flex-col justify-between items-center 1440:items-end gap-[3rem]'>
             <div className='flex flex-wrap justify-center gap-[2rem]'>
                 <div className='flex flex-col gap-[13px] 1440:gap-[3rem] items-start'>

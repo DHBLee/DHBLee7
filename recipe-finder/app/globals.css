@@ -1,0 +1,321 @@
+@import "tailwindcss";
+
+/* Nunito - Variable */
+@font-face {
+  font-family: 'Nunito';
+  src: url('/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/assets/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Nunito Sans - Variable */
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/assets/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype-variations');
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/assets/fonts/Nunito_Sans/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype-variations');
+  font-weight: 200 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-Neutral900: hsl(164, 45%, 16%);
+  --color-Neutral800: hsl(166, 22%, 28%);
+  --color-Neutral300: hsl(160, 13%, 84%);
+  --color-Neutral200: hsl(150, 10%, 89%);
+  --color-Neutral100: hsl(45, 20%, 95%);
+  --color-Neutral0: hsl(0, 0%, 100%);
+  --color-Orange500: hsl(21, 98%, 71%);
+  --color-Teal500: hsl(170, 40%, 48%);
+  --color-Indigo500: hsl(230, 62%, 64%)
+
+
+  --breakpoint-1440: 90rem;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    height: 100vh;
+  }
+
+  body {
+    min-height: 100vh;
+    max-width: 1440px;
+    margin-inline: auto;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    user-select: none;
+  }
+
+  svg {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  span,
+  h1, h2, h3, h4, h5, h6,
+  p {
+    display: inline-block;
+  }
+
+  a {
+    color: inherit;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  input {
+    font-size: inherit;
+    border: none;
+    font-family: inherit;
+    background-color: inherit;
+
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  textarea {
+    font-size: inherit;
+    border: none;
+    font-family: inherit;
+    line-height: 1.5;
+    background-color: inherit;
+
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  progress {
+    width: 100%;
+    height: 1rem;
+    border-radius: 40px;
+    background: white;
+    margin: 0;
+  }
+  .dark progress {
+    background: var(--color-Blue850);
+  }
+  progress::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: 40px;
+    height: 0.6rem;
+
+  }
+  progress::-webkit-progress-value {
+    position: relative;
+    top:-0.02rem;
+    background: var(--color-Purple600);
+    border-radius: 40px;
+    margin: 0.2rem;
+    height: 0.6rem;
+
+  }
+
+  .highlighter {
+    @apply bg-[linear-gradient(to_top,var(--color-Orange500)_50%,transparent_50%)] bg-no-repeat [background-size:100%_95%] [background-position:0_90%];
+  }
+
+  .list-with-arrow li {
+    @apply relative pl-[50px]; /* Adjust padding as needed for the arrow */
+  }
+
+  .list-with-arrow li::before {
+    content: url('/assets/images/icon-bullet-point.svg'); /* The actual arrow character */
+    /* You could also use an SVG background image for more complex arrows */
+    /* content: url('/path/to/your-arrow.svg'); */
+
+    @apply absolute left-0 text-Neutral900; /* Position and color the arrow */
+    /* Adjust top for vertical alignment if needed */
+    @apply top-[0.1em] /* Adjust as needed for vertical alignment */; 
+    @apply text-xl; /* Adjust size of the arrow if it's a character */
+    /* If using an SVG, adjust background-size and width/height instead */
+  }
+
+}
+
+@layer components {
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+  }
+  .switch:hover .slider.round:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .switch:hover .slider:before {
+    background-color: white;
+  }
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-Purple600);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background: var(--color-Purple600);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+    background-color: var(--color-White);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+
+  }
+
+  .text-preset1 {
+    @apply text-[clamp(3.25rem,2.534351145038168rem+3.053435114503817vw,4rem)] md:text-[clamp(4rem,3.428571428571429rem+1.1904761904761905vw,4.5rem)] leading-[110%] tracking-[-2px] font-extrabold;
+  }
+  .text-preset2 {
+    @apply text-[clamp(2.5rem,2.0229007633587788rem+2.035623409669211vw,3rem)] leading-[120%] tracking-[-2px] font-extrabold;
+  }
+  .text-preset3 {
+      @apply text-[32px] leading-[130%] tracking-[-1px] font-bold;
+  }
+  .text-preset4 {
+      @apply text-[24px] leading-[130%] tracking-[-1px] font-bold;
+  }
+  .text-preset5 {
+      @apply text-[20px] leading-[140%] tracking-[-0.5px] font-bold;
+  }
+  .text-preset6 {
+      @apply text-[20px] font-medium;
+  }
+  .text-preset7 {
+      @apply text-[18px] font-semibold;
+  }
+  .text-preset8 {
+      @apply text-[16px] font-bold;
+  }
+  .text-preset9 {
+      @apply text-[16px] font-medium;
+  }
+  .text-preset10 {
+      @apply text-[14px] font-bold;
+  }
+
+  .text-preset7, .text-preset8, .text-preset9 , .text-preset10 {
+      @apply tracking-[-0.3px] leading-[150%]
+  }
+  .text-preset6, .text-preset8, .text-preset9 , .text-preset10 {
+      font-family: 'Nunito Sans', sans-serif;
+  }
+
+}

@@ -38,7 +38,7 @@ I wish there could be a sixth star for these ratings. The Italian food here - AU
 ];
 
 export const slideshowImages = [
-  '/tiramisu3.webp',
+  '/images/gallery/gallery (2).webp',
   '/images/gallery/gallery (12).webp',
   '/images/gallery/gallery (13).webp',
   '/images/gallery/gallery (8).webp',

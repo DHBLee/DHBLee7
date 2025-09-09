@@ -3,6 +3,31 @@ import Ready from "@/UI/Ready";
 import Article from "./article";
 import { whyweexist, ourfoodphilosophy } from "@/data/data";
 
+export const metadata = {
+    title: {
+      default: 'About',
+      template: 'About | Recipe App', // e.g., "Chicken Curry | Recipe App"
+    },
+    description: 'Discover what this website is all about.',
+    openGraph: {
+      title: 'About | Recipe App',
+      description: 'Find the reason why this recipe finder was built.',
+      images: '/image-about-our-mission-small.webp', // 1200x630px image in /public
+      type: 'website',
+      url: 'https://your-recipe-app.com',
+    },
+    twitter: {
+      card: 'About_Our_image',
+      title: 'Recipe App',
+      description: 'Explore recipes with ease.',
+      images: '/image-about-our-mission-small.webp',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+
 export default function About() {
     return (
         <main>
@@ -34,6 +59,7 @@ export default function About() {
                 <Article title="Why we exist" articledata={whyweexist} />
                 <Article title="Our food philosophy" articledata={ourfoodphilosophy} />
             </section>
+            <div className="w-screen relative left-1/2 -translate-x-1/2 border-b border-Neutral300"></div>
             <section className="flex flex-col lg:flex-row items-start lg:items-center gap-[40px] pt-[48px] md:py-[80px] lg:py-[96px]">
                 <div className="flex flex-col items-start gap-[20px]">
                     <h2 className="text-preset2 text-Neutral900">Beyond the plate</h2>

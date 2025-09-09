@@ -3,6 +3,11 @@ import Button from "@/UI/Button";
 import { whatyoullget } from "@/data/data";
 import Ready from "@/UI/Ready";
 
+export const metadata = {
+  title: 'Home',
+  description: 'Discover quick, whole-food recipes that you can cook tonight—no processed junk, no guesswork.',
+};
+
 export default function Home() {
   return (
     <>
@@ -47,6 +52,7 @@ export default function Home() {
             </div>
           </section>
 
+          <div className="hidden md:block w-screen relative left-1/2 -translate-x-1/2 border-b border-Neutral300"></div>
           <section className="pt-[64px] md:pt-[80px] lg:py-[96px] flex flex-col lg:flex-row items-start lg:items-center gap-[32px] md:gap-[40px]">
             <div className="flex flex-col items-start gap-[16px] max-w-[60ch]">
               <h2 className="text-preset2 text-Neutral900">Built for real life</h2>

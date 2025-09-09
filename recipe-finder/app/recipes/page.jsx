@@ -2,6 +2,10 @@
 
 import Recipes from "@/components/Recipes";
 
+export const metadata = {
+    title: 'Recipes',
+    description: 'Discover quick, whole-food recipes that are easy to make and taste amazing. Browse our collection of healthy dishes for every occasion.',
+  };
 export default function RecipesPage() {
     return (
         <main className="py-[48px] md:py-[64px] lg:py-[80px]">

@@ -135,6 +135,27 @@
     outline: none;
   }
 
+  .animated-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .animated-underline::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -1px;
+    height: 3px;
+    width: 0;
+    background-color: var(--color-Orange500);
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .animated-underline:hover::after, .active-link.animated-underline::after {
+    width: 100%;
+  }
+
   textarea {
     font-size: inherit;
     border: none;

@@ -7,7 +7,7 @@ import Button from '@/UI/Button';
 const RecipeList = ({displayedRecipes = [] }) => {
   return (
     <section>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
     {displayedRecipes.length > 0 ? (
         displayedRecipes.map((recipe) => (
             <div key={recipe.id} className="p-2 space-y-4 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
@@ -23,7 +23,6 @@ const RecipeList = ({displayedRecipes = [] }) => {
                         height={600}
             
                         className="w-full h-auto rounded-[10px] "
-                        quality={100}
                         />
                     </picture>
                     <div className="flex-1 flex flex-col gap-3">

@@ -86,3 +86,22 @@ export const links = [
     },
 
 ]
+
+export const rooms = [
+  {
+    name: "Collonade Outdoor",
+    img: "/images/background/landmark-bg.webp",
+  },
+  {
+    name: "Counter",
+    img: "/images/gallery/gallery (10).webp",
+  },
+  {
+    name: "Private Dining Room",
+    img: "/images/private-dining.webp",
+  },
+  {
+    name: "Restaurant",
+    img: "/landmark-picture.webp",
+  }
+]

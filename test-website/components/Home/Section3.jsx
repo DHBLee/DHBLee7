@@ -13,11 +13,11 @@ const texts = [
 
 const Section3 = () => {
   return (
-    <div className="px-[24px] md:px-[32px] 1440:px-[86px] relative w-full h-screen">
-        <Image src="/images/background/landmark-bg.webp" fill  alt="Picture of Mezzalira outside" className="object-cover"/>
+    <div className="relative w-full h-screen">
+        <Image src="/images/background/landmark-bg.webp" fill  alt="Picture of Mezzalira outside" className="object-cover "/>
          
         <MotionDiv
-            ClassName='mx-auto lg:mx-0 lg:ml-auto min-w-[300px] w-full max-w-[40%] h-screen flex items-center gap-[74px] backdrop-blur-xs'
+            ClassName='px-[24px] md:px-[32px] 1440:px-[86px] mx-auto lg:mx-0 lg:ml-auto min-w-[300px] w-full md:max-w-[70%] lg:max-w-[40%] h-screen flex items-center gap-[74px] backdrop-blur-xs'
         >
 
             <div className="flex flex-col items-center lg:items-start gap-7">
@@ -37,3 +37,49 @@ const Section3 = () => {
 }
 
 export default Section3
+
+
+
+
+
+
+// import React from 'react'
+// import { workSans } from '@/app/fonts';
+// import { lora } from '@/app/fonts';
+// import Button from "@/UI/Button";
+// import Image from "next/image";
+// import { MotionDiv } from '@/UI/Motion';
+// import Link from 'next/link';
+
+// const Section6 = () => {
+//   return (
+//     <>
+//      <section className="px-[24px] md:px-[32px] 1440:px-[86px] py-[78px] relative w-full aspect-[2/1]">
+//         <Image src="/images/background/wood-fire.webp" fill alt="A Background Picure of a Fire-wood Oven" className="object-cover"/>
+
+//         <MotionDiv
+//           ClassName='relative z-20'
+//         >
+//             <img src="/brighter-images-of-places.webp" alt="Images of the interior of Mezzalira Ristorante" />
+//         </MotionDiv>
+//       </section>
+      
+//       <section className='bg-[#333333]'>
+//         <MotionDiv
+//           transition={{ duration: 0.6 }}
+//           ClassName=' py-[41px] 1440:py-[70px] grid place-items-center gap-6 px-[24px] md:px-[32px] 1440:px-[86px] w-full text-center'
+//         >
+//           <h2 className={`${lora.className} HeadingM`}>Memorable Meals, Together</h2>
+//           <p className={`Body ${workSans.className} max-w-[90ch]`}>Our function menu, perfect for private events and group dining, our curated function menus feature seasonal produce and a choice of set, shared, or tasting experiences—crafted for memorable celebrations.</p>
+//           <Link href="/menu">
+//             <Button>
+//                 Function Menu
+//             </Button>
+//           </Link>
+//         </MotionDiv>
+//       </section>
+//     </>
+//   )
+// }
+
+// export default Section6

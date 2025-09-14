@@ -1,40 +1,53 @@
-import React from 'react'
+'use client';
+import { useState } from 'react';
+import Image from 'next/image';
+import { rooms } from '@/util/data';
 import { workSans } from '@/app/fonts';
-import { lora } from '@/app/fonts';
-import Button from "@/UI/Button";
-import Image from "next/image";
-import { MotionDiv } from '@/UI/Motion';
-import Link from 'next/link';
 
-const Section6 = () => {
+export default function Section6() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const bgSrc = rooms[activeIdx]?.img ?? '/images/background/wood-fire.webp';
+
   return (
     <>
-     <section className="px-[24px] md:px-[32px] 1440:px-[86px] py-[78px] relative w-full aspect-[2/1]">
-        <Image src="/images/background/wood-fire.webp" fill alt="A Background Picure of a Fire-wood Oven" className="object-cover"/>
+      <section className="flex flex-col gap-6 items-center bg-[#333333] relative  px-[24px] md:px-[32px] 1440:px-[86px] py-[24px] md:py-[32px] 1440:py-[40px]">
+        {/* Button group (tabs) */}
+        <div role="tablist" aria-label="Room selector" className="mb-4 flex justify-center gap-3 flex-wrap">
+          {rooms.map((room, idx) => (
+            <button
+              key={room.name}
+              role="tab"
+              aria-selected={activeIdx === idx}
+              aria-controls="room-panel"
+              id={`room-tab-${idx}`}
+              onClick={() => setActiveIdx(idx)}
+              className={`px-5 py-1 border rounded HeadingXS transition ${workSans.className}
+                ${activeIdx === idx
+                  ? 'bg-Yellow text-black border-Yellow'
+                  : 'bg-white/10 text-white border-white/20 hover:bg-white/20'}`}
+            >
+              {room.name}
+            </button>
+          ))}
+        </div>
 
-        <MotionDiv
-          ClassName='relative z-20'
+        {/* Full-size selected room image */}
+        <div
+          id="room-panel"
+          role="tabpanel"
+          aria-labelledby={`room-tab-${activeIdx}`}
+          className="relative w-full h-full aspect-[1/1] md:aspect-[2/1]"
         >
-            <img src="/brighter-images-of-places.webp" alt="Images of the interior of Mezzalira Ristorante" />
-        </MotionDiv>
-      </section>
-      
-      <section className='bg-[#333333]'>
-        <MotionDiv
-          transition={{ duration: 0.6 }}
-          ClassName=' py-[41px] 1440:py-[70px] grid place-items-center gap-6 px-[24px] md:px-[32px] 1440:px-[86px] w-full text-center'
-        >
-          <h2 className={`${lora.className} HeadingM`}>Memorable Meals, Together</h2>
-          <p className={`Body ${workSans.className} max-w-[90ch]`}>Our function menu, perfect for private events and group dining, our curated function menus feature seasonal produce and a choice of set, shared, or tasting experiences—crafted for memorable celebrations.</p>
-          <Link href="/menu">
-            <Button>
-                Function Menu
-            </Button>
-          </Link>
-        </MotionDiv>
+          <Image
+            src={bgSrc}
+            alt={rooms[activeIdx]?.name ?? 'Room'}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover transition-[opacity,transform] duration-500 ease-out rounded"
+          />
+        </div>
       </section>
     </>
-  )
+  );
 }
-
-export default Section6

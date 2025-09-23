@@ -1,5 +1,5 @@
 
-import WeatherPage from './Weather'
+import WeatherPage from './components/Weather'
 
 function App() {
 

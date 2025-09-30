@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { rooms } from '@/util/data';
 import { workSans } from '@/app/fonts';
+import backgroundImg from '@/public/images/background/background-texture.png';
 
 export default function Section6() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -30,8 +31,9 @@ export default function Section6() {
   }, [incomingReady]);
 
   return (
-    <section className="flex flex-col gap-6 items-center bg-[#333333] relative px-[24px] md:px-[32px] 1440:px-[86px] py-[24px] md:py-[32px] 1440:py-[40px]">
-      <div role="tablist" aria-label="Room selector" className="mb-4 flex justify-center gap-3 flex-wrap">
+    <section className="flex flex-col gap-6 items-center  relative px-[24px] md:px-[32px] 1440:px-[86px] py-[24px] md:py-[32px] 1440:py-[40px]">
+      <Image src={backgroundImg} fill  />
+      <div role="tablist" aria-label="Room selector" className="relative z-[2] mb-4 flex justify-center gap-3 flex-wrap">
         {rooms.map((room, idx) => (
           <button
             key={room.name}

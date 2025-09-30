@@ -1,122 +1,240 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from "next/image";
-
-import { slideshowImages, testimonials2 } from '@/util/data'
-import React, { useEffect, useState } from 'react'
+import { testimonials2 } from '@/util/data'
+import React, { useState, useMemo, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useMediaQuery } from '@/util/useMediaQuery';
 
 const Section5 = () => {
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const [imageIndex, setImageIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [slidePosition, setSlidePosition] = useState(0);
+  
+  // Replace useEffect with useMediaQuery hook for better performance
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
+  
+  const screenSize = useMemo(() => {
+    if (isMobile) return 'mobile';
+    if (isTablet) return 'tablet';
+    return 'desktop';
+  }, [isMobile, isTablet]);
 
-  const nextTestimonial = () =>
-    setTestimonialIndex((prev) => (prev + 1) % testimonials2.length);
+  // Memoize navigation handlers
+  const nextTestimonial = useCallback(() => {
+    setSlidePosition(prev => prev + 1);
+  }, []);
 
-  const prevTestimonial = () =>
-    setTestimonialIndex((prev) => (prev - 1 + testimonials2.length) % testimonials2.length);
+  const prevTestimonial = useCallback(() => {
+    setSlidePosition(prev => prev - 1);
+  }, []);
 
-   useEffect(() => {
-    if (slideshowImages.length === 0) return;
+  // Memoize infinite array - only recreate if testimonials2 changes
+  const infiniteTestimonials = useMemo(() => {
+    const repetitions = 5; // Reduced from 20 to 5
+    return Array.from({ length: repetitions }, () => testimonials2).flat();
+  }, []);
 
-    const interval = setInterval(() => {
-      setImageIndex((prev) => (prev + 1));
-    }, 5000);
+  const startingIndex = testimonials2.length * 2; // Adjusted for smaller array
 
-    return () => clearInterval(interval);
-  }, [slideshowImages.length]);
-
-  useEffect(() => {
-    if (imageIndex === slideshowImages.length) {
-      setTimeout(() => {
-        setIsTransitioning(false);
-        setImageIndex(0);
-        setTimeout(() => setIsTransitioning(true), 50);
-      }, 600)
+  // Memoize responsive configuration
+  const config = useMemo(() => {
+    switch (screenSize) {
+      case 'mobile':
+        return { cardWidth: 320, visibleCards: 1, containerPadding: 24 };
+      case 'tablet':
+        return { cardWidth: 300, visibleCards: 2, containerPadding: 32 };
+      default:
+        return { cardWidth: 400, visibleCards: 3, containerPadding: 0 };
     }
-  },[imageIndex, slideshowImages.length])
+  }, [screenSize]);
 
-  const currentTestimonial = testimonials2[testimonialIndex];
+  const { cardWidth, visibleCards, containerPadding } = config;
+  
+  // Memoize calculated values
+  const containerWidth = useMemo(() => 
+    (cardWidth * visibleCards) + containerPadding, 
+    [cardWidth, visibleCards, containerPadding]
+  );
+  
+  const currentPosition = startingIndex + slidePosition;
+  
+  const offset = useMemo(() => 
+    -(currentPosition * cardWidth) + containerWidth / 2 - cardWidth / 2,
+    [currentPosition, cardWidth, containerWidth]
+  );
 
   return (
-     <section className="h-screen flex flex-col-reverse lg:flex-row relative">
-      {/* Left Side: Testimonial */}
-        <article className="grid place-items-center relative lg:w-1/2 h-full py-[32px]">
+    <section className='relative min-h-screen flex items-center justify-center'>
+      <Image 
+        src="/images/background/variety-meets-craft-bg.webp" 
+        fill 
+        alt="Background Image for Testimonials" 
+        className="object-cover"
+        priority={false}
+        quality={75}
+        sizes="100vw"
+      />
+      
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
+        {/* Navigation Buttons */}
+        <button
+          onClick={prevTestimonial}
+          className={`absolute top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-200 ${
+            screenSize === 'mobile' ? 'left-2' : 'left-4'
+          }`}
+          aria-label="Previous testimonial"
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
 
-          <div className="px-[24px] md:px-[32px] 1440:px-[86px] py-[2rem]  z-20">
-            <div className='w-full h-[250px] md:h-[350px] lg:h-[400px] max-w-[535px] 1440:max-h-[503px] relative text-justify flex flex-col gap-4 border-white/20 backdrop-blur-sm rounded-lg justify-center items-center border-[1px] px-[32px] md:px-[48px] 1440:px-[71px] py-[26px]'>
-                <button
-                    onClick={prevTestimonial}
-                    className="absolute z-20 left-[-1.5rem] bg-white/30 hover:bg-white/50 backdrop-blur-md p-2 rounded-full"
-                    aria-label='an arrow pointing towards the left'
-                >
-                    <ChevronLeft />
-                </button>
-                <img
-                src={currentTestimonial.profile}
-                alt="Reviewer"
-                className="absolute top-[-2rem] z-20 left-[50%] translate-x-[-50%] w-[55px] lg:w-[75px] 1440:w-full max-w-[100px] h-auto rounded-full border-2 border-white"
-                />
-                <div className='relative h-auto max-h-[200px] overflow-y-auto scrollbar-none'>
-                <p className="Body my-auto align-middle">{currentTestimonial.text}</p>
-                </div>
-                <div className="flex items-center gap-2">
-                    <h5 className="Body">{currentTestimonial.name}, </h5>
-                    <a href={currentTestimonial.link} target='_blank' rel="noopener noreferrer" >
-                        <span className="BodySmall underline">{currentTestimonial.source}</span>
-                    </a>
-                </div>
-                <button
-                    onClick={nextTestimonial}
-                    className="absolute z-20 right-[-1.5rem] bg-white/30 hover:bg-white/50 backdrop-blur-md p-2 rounded-full"
-                    aria-label='an arrow pointing towards the right'
-                >
-                    <ChevronRight />
-                </button>
-            </div>
+        <button
+          onClick={nextTestimonial}
+          className={`absolute top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-200 ${
+            screenSize === 'mobile' ? 'right-2' : 'right-4'
+          }`}
+          aria-label="Next testimonial"
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </button>
 
-          </div>
-
-          <Image
-            src="/images/background/testimonials-bgi.webp"
-            fill
-            alt="Kitchen Background"
-            className="w-full object-cover"
-          />
-
-        </article>
-
-        {/* Right Side: Autoplay Image */}
-       <figure className="relative lg:w-1/2 h-[100%] lg:h-full overflow-hidden">
+        {/* Carousel Container */}
+        <div 
+          className="overflow-hidden py-20 mx-auto"
+          style={{ 
+            width: `${containerWidth}px`,
+            maxWidth: '100vw'
+          }}
+        >
           <motion.div
-            animate={{ x: `-${imageIndex * (100 / (slideshowImages.length + 1))}%` }}
-            transition={isTransitioning ? { duration: 0.6, ease: 'easeInOut' } : { duration: 0 }}
-            className="flex h-full"
-            style={{ width: `${(slideshowImages.length + 1) * 100}%` }}
+            className="flex"
+            animate={{ x: offset }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+            }}
+            style={{
+              width: `${infiniteTestimonials.length * cardWidth}px`,
+              willChange: 'transform'
+            }}
           >
-            {slideshowImages.map((img, i) => (
-              <div 
-                key={i} 
-                className="relative h-full flex-shrink-0"
-                style={{ width: `${100 / (slideshowImages.length + 1)}%` }}
-              >
-                <Image src={img} fill alt={`Slide ${i}`} className="object-cover" />
-              </div>
-            ))}
-            {/* Duplicate first image at the end */}
-            <div 
-              className="relative h-full flex-shrink-0"
-              style={{ width: `${100 / (slideshowImages.length + 1)}%` }}
-            >
-              <Image src={slideshowImages[0]} fill alt="Slide duplicate" className="object-cover" />
-            </div>
+            {infiniteTestimonials.map((testimonial, index) => {
+              const isCenter = index === currentPosition;
+              
+              return (
+                <div
+                  key={`${testimonial.id || testimonial.name}-${index}`}
+                  className={`flex-shrink-0 transition-all duration-500 ease-out ${
+                    screenSize === 'mobile' ? 'px-2' : 'px-4'
+                  } ${
+                    isCenter 
+                      ? 'scale-100 z-10 opacity-100' 
+                      : `${screenSize === 'mobile' ? 'scale-100 opacity-60' : 'scale-75 opacity-50'} z-0`
+                  }`}
+                  style={{ width: `${cardWidth}px` }}
+                >
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    isActive={isCenter}
+                    screenSize={screenSize}
+                  />
+                </div>
+              );
+            })}
           </motion.div>
-      </figure>
-
+        </div>
+      </div>
     </section>
   )
 }
 
-export default Section5
+// Memoized TestimonialCard
+const TestimonialCard = React.memo(({ testimonial, isActive, screenSize }) => {
+  // Memoize styles calculation
+  const styles = useMemo(() => {
+    switch (screenSize) {
+      case 'mobile':
+        return {
+          containerHeight: isActive ? 'h-[400px]' : 'h-[380px]',
+          padding: isActive ? 'p-4 pt-10' : 'p-3 pt-9',
+          profileSize: isActive ? 'w-16 h-16' : 'w-14 h-14',
+          profileTop: isActive ? '-top-8' : '-top-7',
+          imageSize: isActive ? 64 : 56,
+          titleSize: isActive ? 'Body' : 'text-sm',
+          textSize: isActive ? 'Body' : 'text-xs',
+          sourceSize: 'text-xs'
+        };
+      case 'tablet':
+        return {
+          containerHeight: isActive ? 'h-[380px]' : 'h-[360px]',
+          padding: isActive ? 'p-5 pt-11' : 'p-4 pt-10',
+          profileSize: isActive ? 'w-18 h-18' : 'w-16 h-16',
+          profileTop: isActive ? '-top-9' : '-top-8',
+          imageSize: isActive ? 72 : 64,
+          titleSize: isActive ? 'Body' : 'text-base',
+          textSize: isActive ? 'Body' : 'text-sm',
+          sourceSize: 'BodySmall'
+        };
+      default:
+        return {
+          containerHeight: isActive ? 'h-[420px]' : 'h-[380px]',
+          padding: isActive ? 'p-6 pt-12' : 'p-4 pt-10',
+          profileSize: isActive ? 'w-20 h-20' : 'w-16 h-16',
+          profileTop: isActive ? '-top-10' : '-top-8',
+          imageSize: isActive ? 80 : 64,
+          titleSize: isActive ? 'Body' : 'text-base',
+          textSize: isActive ? 'Body' : 'text-sm',
+          sourceSize: 'BodySmall'
+        };
+    }
+  }, [screenSize, isActive]);
+
+  return (
+    <div className={`bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-center transition-all duration-500 ${styles.containerHeight} ${styles.padding} ${
+      !isActive ? 'cursor-pointer hover:bg-white/15' : ''
+    } w-full flex flex-col mx-auto relative will-change-transform`}>
+      
+      {/* Profile Picture */}
+      {testimonial.profile && (
+        <div className={`rounded-full overflow-hidden border-2 border-white/30 absolute left-1/2 -translate-x-1/2 ${styles.profileSize} ${styles.profileTop} z-10`}>
+          <Image 
+            src={testimonial.profile} 
+            alt={testimonial.name}
+            width={styles.imageSize}
+            height={styles.imageSize}
+            className="object-cover w-full h-full"
+            loading="lazy"
+            quality={75}
+          />
+        </div>
+      )}
+
+      {/* Author Info */}
+      <div className="flex flex-col gap-1 flex-shrink-0 mb-4">
+        <h4 className={`text-white font-semibold ${styles.titleSize}`}>
+          {testimonial.name}
+        </h4>
+        <a 
+          href={testimonial.link} 
+          target='_blank' 
+          rel="noopener noreferrer"
+          className={`underline hover:text-white/80 transition-colors ${styles.sourceSize}`}
+        >
+          {testimonial.source}
+        </a>
+      </div>
+
+      {/* Text content */}
+      <div className="w-full overflow-y-auto scrollbar-none flex-grow">
+        <p className={`text-white leading-relaxed text-justify ${styles.textSize}`}>
+          {testimonial.text}
+        </p>
+      </div>
+    </div>
+  );
+});
+
+TestimonialCard.displayName = 'TestimonialCard';
+
+export default Section5;

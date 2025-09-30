@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const sentence = "Celebrating 30 Years of Refined Italian Dining";
 
@@ -17,29 +17,69 @@ const letter = {
 };
 
 const Section1 = () => {
+  const { scrollY } = useScroll();
+  const videoRef = useRef(null);
+  const containerRef = useRef(null);
+  
+  // Smoother clip-path with easing
+  const clipPath = useTransform(
+    scrollY,
+    [0, 600],
+    ["inset(0% 0% 0% 0%)", "inset(0% 0% 70% 0%)"]
+  );
+  
+  const textOpacity = useTransform(scrollY, [150, 350], [1, 0]);
+  
+  // Preload and optimize video
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      // Force GPU layer
+      videoRef.current.style.transform = 'translate3d(0, 0, 0)';
+    }
+  }, []);
+  
   return (
     <div className="relative h-screen">
-      {/* Wrapper that creates the inner shadow via pseudo-element */}
-      <div className="video-wrap relative h-screen w-full">
+      {/* Video section with optimized clip-path */}
+      <motion.div 
+        ref={containerRef}
+        className="fixed top-0 left-0 h-screen w-full z-0"
+        style={{
+          clipPath: clipPath,
+          willChange: 'clip-path',
+          transform: 'translate3d(0, 0, 0)' // Force GPU layer
+        }}
+      >
         <video
+          ref={videoRef}
           aria-label="A Compilation Video of Mezzalira"
           autoPlay
           muted
           loop
           playsInline
-          fetchPriority="high"
+          preload="auto"
           poster="/mezzalira-video-cover.webp"
           className="h-screen w-full object-cover"
+          style={{
+            transform: 'translate3d(0, 0, 0)',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden'
+          }}
         >
           <source src="/mezzalira-video.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
-        {/* Inner shadow overlay */}
         <div aria-hidden className="pointer-events-none absolute inset-0 z-10 shadow-inset-mask" />
-      </div>
+      </motion.div>
 
-      {/* Text above overlay so it “shines” */}
-      <div className="px-[24px] md:px-[32px] 1440:px-[86px] z-20 flex flex-col lg:gap-4 items-center text-center absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-full">
+      <motion.div 
+        className="px-[24px] md:px-[32px] 1440:px-[86px] z-20 flex flex-col lg:gap-4 items-center text-center fixed top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none"
+        style={{
+          opacity: textOpacity,
+          willChange: 'opacity'
+        }}
+      >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +103,7 @@ const Section1 = () => {
             </motion.span>
           ))}
         </motion.h2>
-      </div>
+      </motion.div>
     </div>
   );
 };

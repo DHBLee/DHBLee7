@@ -98,7 +98,7 @@ export const rooms = [
   },
   {
     name: "Private Dining Room",
-    img: "/images/private-dining.webp",
+    img: "/images/Final_IMage.webp",
   },
   {
     name: "Restaurant",

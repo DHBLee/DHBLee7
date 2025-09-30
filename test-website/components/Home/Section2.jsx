@@ -1,10 +1,11 @@
+'use client';
 import React from 'react'
 import Button from "@/UI/Button";
 import Image from "next/image";
 import { lora, workSans } from '@/app/fonts';
 import Link from 'next/link';
 import { MotionDiv, MotionH3 } from '@/UI/Motion';
-
+import { motion } from 'framer-motion';
 
 const texts = [
     {
@@ -20,12 +21,25 @@ const texts = [
         description: 'Locally sourced, seasonal ingredients in every dish',
     }
 ]
+
 const Section2 = () => {
   return (
-    <div className="h-screen relative grid place-items-center w-full">
-        <Image src="/images/background/variety-meets-craft-bg.webp" fill alt="A background picture of the kitchen" quality={100} className="object-cover"/>
+    <div className="min-h-screen relative grid place-items-center w-full  py-[5rem]">
+        <Image src="/images/background/where-variety-meets.webp" fill alt="A background picture of the kitchen" quality={100} className="object-cover"/>
 
-        <div className="flex flex-col items-center justify-center gap-[30px] relative px-[24px] md:px-[32px] 1440:px-[86px]">
+        <motion.div 
+          className="flex flex-col items-center justify-center gap-[30px] relative px-[24px] md:px-[32px] 1440:px-[86px]"
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ 
+            once: true,
+            margin: "-200px 0px" // Trigger animation 200px before element enters viewport
+          }}
+          transition={{ 
+            duration: 0.8,
+            ease: "easeOut"
+          }}
+        >
           <MotionH3
             ClassName={`${lora.className} HeadingL text-center leading-[44px] 1440:leading-[70px]`}
           >
@@ -51,9 +65,8 @@ const Section2 = () => {
                   View Our Menu                
               </Button>
             </Link>
-
           </MotionDiv>
-        </div>
+        </motion.div>
     </div>
   )
 }

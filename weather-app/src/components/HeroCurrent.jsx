@@ -1,5 +1,5 @@
-import { useEffect, useState, useMemo } from "react";
-import { useWeather } from "../context/WeatherContext";
+import { useMemo } from "react";
+
 import { iconForHour } from "../utils/code";
 import smallBg from "/assets/images/bg-today-small.svg";
 import largeBg from "/assets/images/bg-today-large.svg";
@@ -30,8 +30,8 @@ export function HeroCurrent({ locationName, data }) {
         </picture>
         <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
           <div className="flex flex-col gap-2 text-center md:text-left">
-            <div className="opacity-90">{locationName}</div>
-            <div className="text-xs opacity-70">
+            <h2 className="opacity-90 text-preset4">{locationName}</h2>
+            <div className="text-preset6 opacity-70">
               {current.time
                 ? new Date(current.time).toLocaleDateString(undefined, {
                     weekday: "long",
@@ -41,12 +41,12 @@ export function HeroCurrent({ locationName, data }) {
                 : "—"}
             </div>
           </div>
-          <div className="relative z-50 text-6xl font-bold">
+          <div className="relative z-50 text-preset1 font-bold">
             {iconForHour(current.code, true)}
             {current.temp != null ? (
               <>
                 {Math.round(current.temp)}
-                <span className="text-2xl opacity-90"> {cu.temperature_2m || "°"}</span>
+                <span className="text-preset4 opacity-90"> {cu.temperature_2m || "°"}</span>
               </>
             ) : (
               "—"
@@ -66,9 +66,9 @@ export function HeroCurrent({ locationName, data }) {
 
 function KPI({ label, value, unit }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-black/20 p-3">
-      <div className="text-xs opacity-85">{label}</div>
-      <div className="mt-0.5 text-lg">{value != null ? `${value} ${unit ?? ""}` : "—"}</div>
+    <div className="flex flex-col gap-5 justify-between rounded-xl text-Neutral200 border border-white/10 bg-Neutral800 p-3">
+      <div className="text-preset6 opacity-85">{label}</div>
+      <div className="mt-0.5 text-preset3">{value != null ? `${value} ${unit ?? ""}` : "—"}</div>
     </div>
   );
 }

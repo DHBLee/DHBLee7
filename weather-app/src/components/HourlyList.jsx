@@ -40,14 +40,14 @@ export function HourlyList({ data, onChange, value }) {
   const hourIsDay = data?.hourly?.is_day || [];
 
   return (
-    <div className="rounded-2xl border border-[#232657] bg-[#111432] p-4">
+    <div className="rounded-2xl border border-[#232657] bg-Neutral800 p-4">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="m-0">Hourly forecast</h3>
+        <h3 className="m-0 text-preset5">Hourly forecast</h3>
         <select
           aria-label="Select day"
           value={value}
           onChange={e => onChange(e.target.value)}
-          className="rounded-lg border border-[#2b2e4a] bg-[#0d1021] px-2 py-1 text-white"
+          className="rounded-lg border border-[#2b2e4a] text-preset7 bg-Neutral600 px-2 py-1 text-white"
         >
           <option value="today">Today</option>
           <option value="tomorrow">Tomorrow</option>
@@ -63,7 +63,7 @@ export function HourlyList({ data, onChange, value }) {
             const code = hourCodes[h.i];
             const isDay = Boolean(hourIsDay[h.i]);
             return (
-              <li key={i} className="flex items-center justify-between gap-3 rounded-lg border border-[#232657] bg-[#0d1021] px-3 py-2">
+              <li key={i} className="flex items-center justify-between gap-3 rounded-lg border border-[#232657] bg-Neutral600 px-3 py-2">
                 <div className="flex items-center gap-2">
                   <div className="text-lg">{iconForHour(code, isDay)}</div>
                   <div className="opacity-90">
